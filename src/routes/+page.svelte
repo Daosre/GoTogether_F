@@ -1,1 +1,1 @@
-<a href="/about" class="text-5xl">Page about Enculé</a>
+<a href="/AboutUs">About Us</a>
