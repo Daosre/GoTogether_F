@@ -1,1 +1,6 @@
-<a href="/AboutUs">About Us</a>
+<script lang="ts">
+
+</script>
+
+<a href="/accueil">Click</a>
+

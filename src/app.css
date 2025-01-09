@@ -7,21 +7,27 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-
 .Lato {
-  font-family: "Lato", serif;
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Lato', serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .Damion {
-  font-family: "Damion", serif;
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Damion', serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .GrandiFlora {
-  font-family: "Grandiflora One", serif;
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Grandiflora One', serif;
+	font-weight: 400;
+	font-style: normal;
 }
+
+.Agdasima {
+	font-family: 'Agdasima', serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
