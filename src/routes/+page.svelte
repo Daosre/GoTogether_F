@@ -5,7 +5,7 @@
 	import Logo from '../components/logo.svelte';
 </script>
 
-<div class="fond flex flex-col bg-center bg-cover">
+<div class="fond flex flex-col bg-cover bg-center">
 	<header class="flex justify-center p-4">
 		<Logo />
 	</header>
@@ -30,7 +30,7 @@
 				</p>
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
 					Des événements pourraient vous intéresser ! <br class="md:hidden" />
-					<a href="/" class="text-[#4E5C08]">Voir les événements</a>
+					<a href="/accueil" class="text-[#4E5C08]">Voir les événements</a>
 				</p>
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
 					Participez à des événements ! <a href="/" class="text-[#4E5C08]">Inscrivez-vous</a>
