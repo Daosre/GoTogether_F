@@ -47,3 +47,6 @@
 .buttonshadow {
 	filter: drop-shadow(0 2px 2px#212121)
 }
+.eventshadow {
+	filter: drop-shadow(0 0 4px #21212150);
+}

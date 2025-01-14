@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ButtonParticipate from '../../components/buttonParticipate.svelte';
+	import Event from '../../components/event.svelte';
 </script>
 
-<ButtonParticipate />
+<Event />
