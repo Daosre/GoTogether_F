@@ -1,6 +1,5 @@
 <script lang="ts">
-	import SearchBar from "../../components/searchBar.svelte";
-
+	import ButtonParticipate from '../../components/buttonParticipate.svelte';
 </script>
 
-<SearchBar/>
+<ButtonParticipate />
