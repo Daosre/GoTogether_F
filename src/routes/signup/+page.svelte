@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { schemaSignup } from '../../validator/signup';
-	import InputForm from '../../components/input/InputForm.svelte';
-	import type { signupErrorType, validationError } from '../../utils/type';
-	import InputSubmit from '../../components/input/InputSubmit.svelte';
-	import { validValueForm } from '../../utils/validValueForm';
-	import { signup } from '../../services/auth';
 	import { goto } from '$app/navigation';
+	import InputForm from '../../components/input/InputForm.svelte';
+	import InputSubmit from '../../components/input/InputSubmit.svelte';
+	import { signup } from '../../services/auth';
+	import type { signupErrorType, validationError } from '../../utils/type';
+	import { validValueForm } from '../../utils/validValueForm';
+	import { schemaSignup } from '../../validator/signup';
 	let formData = $state({
 		userName: '',
 		firstName: 'test',
@@ -14,7 +14,7 @@
 		phone: '0000000000',
 		password: '',
 		confirmPassword: '',
-		checkbox: false
+		checkbox: false,
 	});
 	let errors: signupErrorType = $state({});
 	async function submitHandler() {
