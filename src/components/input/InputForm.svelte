@@ -23,5 +23,5 @@
 		value={value[name]}
 		{placeholder}
 	/>
-	{#if error[name]}<span class="text-red-600">{error[name]}</span>{/if}
+	{#if error[name]}<span class="text-center text-red-600">{error[name]}</span>{/if}
 </div>
