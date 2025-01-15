@@ -1,2 +1,5 @@
-<h1>TA MERE</h1>
+<script>
+</script>
+
 <a href="/">Home Page</a>
+<a href="/signup">Signup</a>
