@@ -11,9 +11,9 @@
 	</header>
 	<main class="mb-6 flex grow flex-col items-center">
 		<section
-			class="flex h-[390px] w-[315px] flex-col items-center justify-center rounded-[20px] text-center shadow md:h-[470px] md:w-[450px] lg:w-[660px] lg:w-[804px]"
+			class="flex h-[390px] w-[315px] flex-col items-center justify-center rounded-[20px] text-center shadow md:h-[470px] md:w-[450px] lg:h-[660px] lg:w-[804px]"
 		>
-			<article class="m-2 flex flex-col items-center justify-center gap-1 lg:gap-4">
+			<article class="m-2 flex flex-col items-center justify-center gap-1 lg:gap-4 lg:h-[660px] lg:w-[500px]">
 				<h1 class="Damion text-[32px] md:mb-4 lg:hidden">Bienvenue !</h1>
 				<div class="Damion hidden text-[40px] lg:block">
 					<Typewriter mode="loopRandom">
