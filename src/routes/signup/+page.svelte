@@ -3,6 +3,8 @@
 	import InputForm from '../../components/input/InputForm.svelte';
 	import InputSubmit from '../../components/input/InputSubmit.svelte';
 	import { signup } from '../../services/auth';
+	import Logo from '../../components/logo.svelte';
+	import Footer from '../../components/footer.svelte';
 	import type { signupErrorType, validationError } from '../../utils/type';
 	import { validValueForm } from '../../utils/validValueForm';
 	import { schemaSignup } from '../../validator/signup';
@@ -37,11 +39,14 @@
 	}
 </script>
 
-<main class="flex min-h-screen flex-col items-center gap-7 bg-[#FCF8F4] px-5 py-4">
+<header class="mt-4 flex justify-center">
+	<Logo />
+</header>
+<main class="flex min-h-screen flex-col items-center gap-7 px-5 py-4">
 	<h1 class="font-['Damion'] text-[40px]">Inscription</h1>
 	<form
 		onsubmit={submitHandler}
-		class="flex flex-col items-center gap-5 rounded border border-[#212121] bg-[#FFF4E9] px-5 py-5"
+		class="mb-5 flex flex-col items-center gap-5 rounded border border-[#212121] bg-[#FFF4E9] px-5 py-5"
 	>
 		<InputForm
 			label="Identifiant"
@@ -126,3 +131,4 @@
 		<p>Déjà inscrit ? Cliquez <a href="signin" class="text-[#4E5C08]">ici.</a></p>
 	</form>
 </main>
+<Footer />

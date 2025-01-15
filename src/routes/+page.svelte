@@ -9,7 +9,6 @@
 	<header class="flex justify-center p-4">
 		<Logo />
 	</header>
-
 	<main class="mb-6 flex grow flex-col items-center">
 		<section
 			class="flex h-[390px] w-[315px] flex-col items-center justify-center rounded-[20px] text-center shadow md:h-[470px] md:w-[450px] lg:w-[660px] lg:w-[804px]"

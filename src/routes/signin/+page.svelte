@@ -1,2 +1,72 @@
-<h1>Méthode kevin</h1>
-<p>T'es le boss sauf pour tous</p>
+<script lang="ts">
+	import InputForm from '../../components/input/InputForm.svelte';
+	import type { signupErrorType, validationError } from '../../utils/type';
+	import InputSubmit from '../../components/input/InputSubmit.svelte';
+	import { goto } from '$app/navigation';
+	import Logo from '../../components/logo.svelte';
+	import Footer from '../../components/footer.svelte';
+	import { schemaSignin } from '../../validator/signin';
+	let formData = $state({
+		userName: '',
+		firstName: 'test',
+		lastName: 'test',
+		email: 'test@gmail.com',
+		phone: '0000000000',
+		password: '',
+		confirmPassword: '',
+		checkbox: false,
+	});
+	let errors: signupErrorType = $state({});
+	async function submitHandler() {
+		try {
+			await schemaSignin.validate(formData, { abortEarly: false });
+			errors = {};
+			// signup(formData).then((res) => {
+			// 	if (res.status === 201) {
+			// 		goto('/signin');
+			// 	}
+			// });
+		} catch (err: any) {
+			errors = extractErrors(err);
+		}
+	}
+	function extractErrors(err: validationError) {
+		return err.inner.reduce((acc, err) => {
+			return { ...acc, [err.path]: err.message };
+		}, {});
+	}
+</script>
+
+<header class="mt-4 flex justify-center">
+	<Logo />
+</header>
+<main class="flex min-h-screen grow flex-col items-center justify-center gap-7 px-5 py-4">
+	<h1 class="font-['Damion'] text-[40px]">Connexion</h1>
+	<form
+		onsubmit={submitHandler}
+		class="mb-5 flex flex-col items-center gap-5 rounded border border-[#212121] bg-[#FFF4E9] px-5 py-5"
+	>
+		<InputForm
+			label="Identifiant"
+			placeholder="Identifiant..."
+			value={formData}
+			error={errors}
+			name="userName"
+			schema={schemaSignin}
+		/>
+
+		<InputForm
+			label="Mot de passe"
+			placeholder="Mot de passe..."
+			type="password"
+			value={formData}
+			error={errors}
+			name="password"
+			schema={schemaSignin}
+		/>
+
+		<InputSubmit text="Connexion" />
+		<p>Pas encore inscrit ? Cliquez <a href="signin" class="text-[#4E5C08]">ici.</a></p>
+	</form>
+</main>
+<Footer />
