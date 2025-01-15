@@ -6,26 +6,21 @@
 	import Logo from '../../components/logo.svelte';
 	import Footer from '../../components/footer.svelte';
 	import { schemaSignin } from '../../validator/signin';
+	import { requestPost } from '../../services/requestPost';
 	let formData = $state({
-		userName: '',
-		firstName: 'test',
-		lastName: 'test',
-		email: 'test@gmail.com',
-		phone: '0000000000',
+		identifiant: '',
 		password: '',
-		confirmPassword: '',
-		checkbox: false,
 	});
 	let errors: signupErrorType = $state({});
 	async function submitHandler() {
 		try {
 			await schemaSignin.validate(formData, { abortEarly: false });
 			errors = {};
-			// signup(formData).then((res) => {
-			// 	if (res.status === 201) {
-			// 		goto('/signin');
-			// 	}
-			// });
+			requestPost('auth/signin', formData).then((res) => {
+				if (res.status === 201) {
+					goto('/accueil');
+				}
+			});
 		} catch (err: any) {
 			errors = extractErrors(err);
 		}
@@ -51,7 +46,7 @@
 			placeholder="Identifiant..."
 			value={formData}
 			error={errors}
-			name="userName"
+			name="identifiant"
 			schema={schemaSignin}
 		/>
 
@@ -66,7 +61,7 @@
 		/>
 
 		<InputSubmit text="Connexion" />
-		<p>Pas encore inscrit ? Cliquez <a href="signin" class="text-[#4E5C08]">ici.</a></p>
+		<p>Pas encore inscrit ? Cliquez <a href="signup" class="text-[#4E5C08]">ici.</a></p>
 	</form>
 </main>
 <Footer />

@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import InputForm from '../../components/input/InputForm.svelte';
 	import InputSubmit from '../../components/input/InputSubmit.svelte';
-	import { signup } from '../../services/auth';
+	import { requestPost } from '../../services/requestPost';
 	import Logo from '../../components/logo.svelte';
 	import Footer from '../../components/footer.svelte';
 	import type { signupErrorType, validationError } from '../../utils/type';
@@ -10,10 +10,10 @@
 	import { schemaSignup } from '../../validator/signup';
 	let formData = $state({
 		userName: '',
-		firstName: 'test',
-		lastName: 'test',
-		email: 'test@gmail.com',
-		phone: '0000000000',
+		firstName: '',
+		lastName: '',
+		email: '',
+		phone: '',
 		password: '',
 		confirmPassword: '',
 		checkbox: false,
@@ -23,7 +23,7 @@
 		try {
 			await schemaSignup.validate(formData, { abortEarly: false });
 			errors = {};
-			signup(formData).then((res) => {
+			requestPost('auth/signup', formData).then((res) => {
 				if (res.status === 201) {
 					goto('/signin');
 				}
@@ -131,4 +131,6 @@
 		<p>Déjà inscrit ? Cliquez <a href="signin" class="text-[#4E5C08]">ici.</a></p>
 	</form>
 </main>
-<Footer />
+<footer class="!bg-black">
+	<Footer />
+</footer>

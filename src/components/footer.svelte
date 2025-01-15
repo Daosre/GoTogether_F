@@ -2,8 +2,7 @@
 	import '../app.css';
 </script>
 
-
-<article class="h-[70px] border-t border-black w-full bg-[#FCF8F4] md:h-[94px] lg:h-[116px]">
+<article class="h-[70px] w-full border-t border-black bg-[#FCF8F4] md:h-[94px] lg:h-[116px]">
 	<ol
 		class="Lato flex items-center justify-center gap-10 p-2 text-[13px] md:text-[16px] lg:text-[24px]"
 	>
