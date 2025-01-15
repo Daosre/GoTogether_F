@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ButtonInformation from './buttonInformation.svelte';
+	import ButtonInformation from './button/buttonInformation.svelte';
 </script>
 
 <div

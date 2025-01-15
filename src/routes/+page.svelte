@@ -10,7 +10,6 @@
 		<Logo />
 	</header>
 
-
 	<main class="mb-6 flex grow flex-col items-center">
 		<section
 			class="flex h-[390px] w-[315px] flex-col items-center justify-center rounded-[20px] text-center shadow md:h-[470px] md:w-[450px] lg:w-[660px] lg:w-[804px]"
@@ -34,10 +33,10 @@
 					<a href="/accueil" class="text-[#4E5C08]">Voir les événements</a>
 				</p>
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
-					Participez à des événements ! <a href="/" class="text-[#4E5C08]">Inscrivez-vous</a>
+					Participez à des événements ! <a href="/signup" class="text-[#4E5C08]">Inscrivez-vous</a>
 				</p>
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
-					Déjà membre ? <a href="/" class="text-[#4E5C08]">Connectez vous</a>
+					Déjà membre ? <a href="/signin" class="text-[#4E5C08]">Connectez vous</a>
 				</p>
 			</article>
 		</section>
