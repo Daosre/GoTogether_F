@@ -1,12 +1,12 @@
 <script lang="ts">
-	import InputForm from '../../components/input/InputForm.svelte';
-	import type { signupErrorType, validationError } from '../../utils/type';
-	import InputSubmit from '../../components/input/InputSubmit.svelte';
+	import InputForm from '../../../components/input/InputForm.svelte';
+	import type { signupErrorType, validationError } from '../../../utils/type';
+	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import { goto } from '$app/navigation';
-	import Logo from '../../components/logo.svelte';
-	import Footer from '../../components/footer.svelte';
-	import { schemaSignin } from '../../validator/signin';
-	import { requestPost } from '../../services/requestPost';
+	import Logo from '../../../components/logo.svelte';
+	import Footer from '../../../components/footer.svelte';
+	import { schemaSignin } from '../../../validator/signin';
+	import { requestPost } from '../../../services/requestPost';
 	let formData = $state({
 		identifiant: '',
 		password: '',
@@ -35,7 +35,7 @@
 <header class="mt-4 flex justify-center">
 	<Logo />
 </header>
-<main class="flex min-h-screen grow flex-col items-center justify-center gap-7 px-5 py-4">
+<main class="flex grow flex-col items-center justify-center gap-7 px-5 py-4">
 	<h1 class="font-['Damion'] text-[40px]">Connexion</h1>
 	<form
 		onsubmit={submitHandler}
