@@ -33,8 +33,74 @@
 
 .fond {
 	background-image: url('$lib/asset/fond.jpg');
+<<<<<<< HEAD
+=======
+}
+.darkmodeinner {
+	box-shadow: inset 0 2px 6px #21212180;
+}
+.darkmodeAnimation {
+	animation-fill-mode: both;
+	animation-name: moove;
+	animation-duration: 0.5s;
+	border-color: white;
+	transition-duration: 0.5s;
+}
+.darkmode {
+	background-color: #212121;
+	transition-duration: 1.5s;
+	box-shadow: inset 0 0 2px 1px #fcf8f480;
+	.burgerDM {
+		color: white;
+		transition-duration: 1.5s;
+	}
+	.headerDM,
+	.footerDM {
+		background-color: #212121;
+		transition-duration: 1.5s;
+	}
+>>>>>>> 54f81da55eb2365f6c5ecded3c97a0cc5d1e4904
 }
 
+.lightmode {
+	background-color: white;
+	transition-duration: 1.5s;
+	.headerLM,
+	.footerLM {
+		transition-duration: 1.5s;
+	}
+	.burgerLM {
+		color: #212121;
+		transition-duration: 1.5s;
+	}
+	.moonColor {
+		color: white;
+	}
+}
+@keyframes moove {
+	from {
+		left: 2%;
+	}
+	to {
+		left: 71%;
+	}
+}
+.lightmodeAnimation {
+	animation-fill-mode: both;
+	animation-name: mooveBack;
+	animation-duration: 0.5s;
+	border-color: #f18046;
+	transition-duration: 0.5s;
+}
+
+@keyframes mooveBack {
+	from {
+		left: 72%;
+	}
+	to {
+		left: 2%;
+	}
+}
 .shadow {
 	filter: drop-shadow(0 0 10px rgba(252, 248, 244, 0.5));
 	background-color: rgba(252, 248, 244, 0.75);

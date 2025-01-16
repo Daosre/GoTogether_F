@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import Footer from '../../../components/footer.svelte';
+	import Footer from '../../../components/h.f/footer.svelte';
 	import InputForm from '../../../components/input/InputForm.svelte';
 	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import Logo from '../../../components/logo.svelte';
