@@ -1,15 +1,8 @@
 import { PUBLIC_API_URL } from '$env/static/public';
 import toast from 'svelte-french-toast';
 
-export async function requestPost(pathName: string, data: any) {
-	const req = {
-		method: 'POST',
-		headers: {
-			'content-type': 'application/json; charset=utf-8',
-		},
-		body: JSON.stringify(data),
-	};
-	const api = await fetch(`${PUBLIC_API_URL}${pathName}`, req);
+export async function requestGet(pathName: string) {
+	const api = await fetch(`${PUBLIC_API_URL}${pathName}`);
 	const response = await api.json();
 	if (response.statusCode) {
 		if (typeof response.message === 'object') {
