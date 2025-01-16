@@ -135,7 +135,7 @@
 			<p class="text-center text-red-600">{errors['checkbox']}</p>
 		{/if}
 		<InputSubmit text="Inscription" />
-		<p>Déjà inscrit ? Cliquez <a href="signin" class="text-[#4E5C08]">ici.</a></p>
+		<p>Déjà inscrit ? <a href="signin" class="text-[#4E5C08]">Connecter-vous .</a></p>
 	</form>
 </main>
 <footer class="!bg-black">

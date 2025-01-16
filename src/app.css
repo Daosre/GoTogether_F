@@ -31,23 +31,23 @@
 	font-style: normal;
 }
 
-
 .fond {
-	background-image:  url('$lib/asset/fond.jpg');
+	background-image: url('$lib/asset/fond.jpg');
 }
 
 .shadow {
 	filter: drop-shadow(0 0 10px rgba(252, 248, 244, 0.5));
-	background-color:rgba(252, 248, 244, 0.75)
+	background-color: rgba(252, 248, 244, 0.75);
 }
 
 .inputshadow {
-	box-shadow: inset 0 2px 2px 1px #787880 ;
+	box-shadow: inset 0 2px 2px 1px #787880;
 }
 
 .buttonshadow {
-	filter: drop-shadow(0 2px 2px#212121)
+	filter: drop-shadow(0 2px 2px#212121);
 }
+
 .eventshadow {
 	filter: drop-shadow(0 0 4px #21212150);
 }
@@ -58,10 +58,12 @@
 	cursor: pointer;
 	position: absolute;
 }
+
 .checkbox:checked ~ .checkmark::after {
 	display: block;
 	content: '';
 }
+
 .checkmark {
 	position: absolute;
 	height: 16px;
@@ -71,6 +73,7 @@
 	outline: 1px solid black;
 	background-color: transparent;
 }
+
 .checkmark:after {
 	margin-left: 3.5px;
 	margin-top: 1.5px;

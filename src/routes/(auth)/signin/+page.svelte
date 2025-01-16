@@ -18,7 +18,7 @@
 			errors = {};
 			requestPost('auth/signin', formData).then((res) => {
 				if (res.status === 201) {
-					goto('/accueil');
+					console.log(res);
 				}
 			});
 		} catch (err: any) {
@@ -39,7 +39,7 @@
 	<h1 class="font-['Damion'] text-[40px]">Connexion</h1>
 	<form
 		onsubmit={submitHandler}
-		class="mb-5 flex flex-col items-center gap-5 rounded border border-[#212121] bg-[#FFF4E9] px-5 py-5"
+		class="mb-5 flex flex-col items-center gap-5 rounded border border-[#212121] bg-[#FFF4E9] px-5 py-5 xl:w-1/4"
 	>
 		<InputForm
 			label="Identifiant"
@@ -61,7 +61,7 @@
 		/>
 
 		<InputSubmit text="Connexion" />
-		<p>Pas encore inscrit ? Cliquez <a href="signup" class="text-[#4E5C08]">ici.</a></p>
+		<p>Pas encore inscrit ? <a href="signup" class="text-[#4E5C08]">Rejoignez-nous .</a></p>
 	</form>
 </main>
 <Footer />
