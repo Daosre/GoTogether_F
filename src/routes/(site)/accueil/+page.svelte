@@ -1,9 +1,8 @@
 <script lang="ts">
 	import Event from '../../../components/event.svelte';
-	import Footer from '../../../components/h.f/footer.svelte';
 	import SearchBar from '../../../components/searchBar.svelte';
 	import { requestGet } from '../../../services/requestGet';
-	import type { eventType, getEventListResponseType } from '../../../utils/type';
+	import type { getEventListResponseType } from '../../../utils/type';
 	let search = $state('');
 	let location = $state('');
 	let responseEventList: getEventListResponseType | undefined = $state();
@@ -35,6 +34,3 @@
 		{/each}
 	{/if}
 </main>
-<footer>
-	<Footer />
-</footer>

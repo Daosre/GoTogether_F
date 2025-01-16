@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Moon, Sun } from 'lucide-svelte';
-	let { isDark = $bindable() } = $props();
+	import { getContext } from 'svelte';
+	let isDark = getContext('isDark');
 </script>
 
 <div
