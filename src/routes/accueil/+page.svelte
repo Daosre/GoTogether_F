@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Event from '../../components/event.svelte';
+	import Header from '../../components/h.f/header.svelte';
+	let { isDark = $bindable() } = $props();
 </script>
 
-<Event />
+<Header bind:isDark />

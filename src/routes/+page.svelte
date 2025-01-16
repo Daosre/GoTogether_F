@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Typewriter from 'svelte-typewriter';
 	import '../app.css';
-	import Footer from '../components/footer.svelte';
+	import Footer from '../components/h.f/footer.svelte';
 	import Logo from '../components/logo.svelte';
 </script>
 
@@ -14,7 +14,9 @@
 		<section
 			class="flex h-[390px] w-[315px] flex-col items-center justify-center rounded-[20px] text-center shadow md:h-[470px] md:w-[450px] lg:h-[660px] lg:w-[804px]"
 		>
-			<article class="m-2 flex flex-col items-center justify-center gap-1 lg:gap-4 lg:h-[660px] lg:w-[500px]">
+			<article
+				class="m-2 flex flex-col items-center justify-center gap-1 lg:h-[660px] lg:w-[500px] lg:gap-4"
+			>
 				<h1 class="Damion text-[32px] md:mb-4 lg:hidden">Bienvenue !</h1>
 				<div class="Damion hidden text-[40px] lg:block">
 					<Typewriter mode="loopRandom">
@@ -41,5 +43,4 @@
 			</article>
 		</section>
 	</main>
-	<Footer />
 </div>
