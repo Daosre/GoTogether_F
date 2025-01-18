@@ -7,7 +7,8 @@
 	let location = $state('');
 	let responseEventList: getEventListResponseType | undefined = $state();
 	$effect(() => {
-		// if (search || location) {
+		search;
+		location;
 		const delay = setTimeout(() => {
 			requestGet(`evenement/search?search=${search}&location=${location}`).then((res) => {
 				if (res.response) {
@@ -18,11 +19,6 @@
 		return () => {
 			clearTimeout(delay);
 		};
-		// } else {
-		// 	requestGet(`evenement/search?search=${search}&location=${location}`).then((res) =>
-		// 		console.log(res),
-		// 	);
-		// }
 	});
 </script>
 
