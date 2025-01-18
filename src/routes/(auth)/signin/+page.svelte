@@ -6,7 +6,6 @@
 	import Logo from '../../../components/logo.svelte';
 	import { schemaSignin } from '../../../validator/signin';
 	import { requestPost } from '../../../services/requestPost';
-	import Footer from '../../../components/h.f/footer.svelte';
 	let formData = $state({
 		identifiant: '',
 		password: '',
@@ -40,7 +39,7 @@
 	<h1 class="font-['Damion'] text-[40px]">Connexion</h1>
 	<form
 		onsubmit={submitHandler}
-		class="mb-5 flex flex-col items-center gap-5 rounded border border-[#212121] bg-[#FFF4E9] px-5 py-5 xl:w-1/4"
+		class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white px-5 py-5 xl:w-1/4"
 	>
 		<InputForm
 			label="Identifiant"
@@ -62,6 +61,6 @@
 		/>
 
 		<InputSubmit text="Connexion" />
-		<p>Pas encore inscrit ? <a href="signup" class="text-[#4E5C08]">Rejoignez-nous .</a></p>
+		<p>Pas encore inscrit ? <a href="signup" class="text-green">Rejoignez-nous .</a></p>
 	</form>
 </main>
