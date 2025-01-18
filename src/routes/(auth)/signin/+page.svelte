@@ -65,4 +65,3 @@
 		<p>Pas encore inscrit ? <a href="signup" class="text-[#4E5C08]">Rejoignez-nous .</a></p>
 	</form>
 </main>
-<Footer />
