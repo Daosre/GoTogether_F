@@ -4,7 +4,7 @@
 </script>
 
 <article
-	class="h-[70px] w-full border-t border-black bg-[#FCF8F4] md:h-[94px] lg:h-[116px] {isDark
+	class="bg-floralWhite h-[70px] w-full border-t border-black md:h-[94px] lg:h-[116px] {isDark
 		? 'footerDM'
 		: 'footerLM'}"
 >

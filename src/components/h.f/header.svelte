@@ -2,13 +2,16 @@
 	import { Menu } from 'lucide-svelte';
 	import Darkmode from '../darkMode/darkmode.svelte';
 	import Logoh from './logoh.svelte';
-	let { isDark = $bindable() } = $props();
+	import { getContext } from 'svelte';
+	let isDark: { get: () => boolean } = getContext('isDark');
 </script>
 
 <header
-	class="flex items-center justify-evenly border-2 border-black {isDark ? 'darkmode' : 'lightmode'}"
+	class="flex items-center justify-evenly border-2 border-black {isDark.get()
+		? 'darkmode'
+		: 'lightmode'}"
 >
 	<Logoh />
-	<Darkmode bind:isDark />
-	<Menu class={isDark ? 'burgerDM' : 'burgerLM'} />
+	<Darkmode />
+	<Menu class={isDark.get() ? 'burgerDM' : 'burgerLM'} />
 </header>

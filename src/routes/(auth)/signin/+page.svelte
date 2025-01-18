@@ -4,7 +4,6 @@
 	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import { goto } from '$app/navigation';
 	import Logo from '../../../components/logo.svelte';
-	import Footer from '../../../components/footer.svelte';
 	import { schemaSignin } from '../../../validator/signin';
 	import { requestPost } from '../../../services/requestPost';
 	let formData = $state({
@@ -17,8 +16,9 @@
 			await schemaSignin.validate(formData, { abortEarly: false });
 			errors = {};
 			requestPost('auth/signin', formData).then((res) => {
-				if (res.status === 201) {
-					console.log(res);
+				if (res.status === 201 && typeof window !== undefined) {
+					window.localStorage.setItem('token', res.response.connexion_token);
+					goto('/accueil');
 				}
 			});
 		} catch (err: any) {
@@ -39,7 +39,7 @@
 	<h1 class="font-['Damion'] text-[40px]">Connexion</h1>
 	<form
 		onsubmit={submitHandler}
-		class="mb-5 flex flex-col items-center gap-5 rounded border border-[#212121] bg-[#FFF4E9] px-5 py-5 xl:w-1/4"
+		class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white px-5 py-5 xl:w-1/4"
 	>
 		<InputForm
 			label="Identifiant"
@@ -61,7 +61,6 @@
 		/>
 
 		<InputSubmit text="Connexion" />
-		<p>Pas encore inscrit ? <a href="signup" class="text-[#4E5C08]">Rejoignez-nous .</a></p>
+		<p>Pas encore inscrit ? <a href="signup" class="text-green">Rejoignez-nous .</a></p>
 	</form>
 </main>
-<Footer />

@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="Agdasima eventshadow m-2 flex h-[272px] w-[256px] flex-col items-center gap-2 rounded-[10px] bg-[#FFF4E9] text-[16px] lg:h-[320px] lg:w-[320px] lg:justify-center lg:text-[20px]"
+	class="Agdasima eventshadow m-2 flex h-[272px] w-[256px] flex-col items-center gap-2.5 rounded-[10px] bg-white lg:h-[320px] lg:w-[320px] lg:justify-center lg:text-[20px]"
 >
 	<h2 class="text-[24px] lg:text-[30px]">Soirée Bowling</h2>
 	<h3 class="text-[20px] lg:text-[26px]">Catégorie : Bowling</h3>

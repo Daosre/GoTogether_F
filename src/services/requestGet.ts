@@ -12,8 +12,6 @@ export async function requestGet(pathName: string) {
 		} else {
 			toast.error(response.message);
 		}
-	} else {
-		toast.success(response.message);
 	}
 	return { response: response, status: api.status };
 }
