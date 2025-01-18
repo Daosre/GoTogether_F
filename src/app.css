@@ -41,7 +41,7 @@
 	animation-fill-mode: both;
 	animation-name: moove;
 	animation-duration: 0.5s;
-	border-color: white;
+	border-color: #fcf8f4;
 	transition-duration: 0.5s;
 }
 .darkmode {
@@ -49,7 +49,7 @@
 	transition-duration: 1.5s;
 	box-shadow: inset 0 0 2px 1px #fcf8f480;
 	.burgerDM {
-		color: white;
+		color: #fcf8f4;
 		transition-duration: 1.5s;
 	}
 	.headerDM,
@@ -60,7 +60,7 @@
 }
 
 .lightmode {
-	background-color: white;
+	background-color: #fcf8f4;
 	transition-duration: 1.5s;
 	.headerLM,
 	.footerLM {
@@ -71,7 +71,7 @@
 		transition-duration: 1.5s;
 	}
 	.moonColor {
-		color: white;
+		color: #fcf8f4;
 	}
 }
 @keyframes moove {
@@ -79,7 +79,7 @@
 		left: 2%;
 	}
 	to {
-		left: 71%;
+		left: 72%;
 	}
 }
 .lightmodeAnimation {
@@ -95,7 +95,7 @@
 		left: 72%;
 	}
 	to {
-		left: 2%;
+		left: 1%;
 	}
 }
 .shadow {

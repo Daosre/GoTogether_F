@@ -4,9 +4,9 @@
 	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import { goto } from '$app/navigation';
 	import Logo from '../../../components/logo.svelte';
-	import Footer from '../../../components/footer.svelte';
 	import { schemaSignin } from '../../../validator/signin';
 	import { requestPost } from '../../../services/requestPost';
+	import Footer from '../../../components/h.f/footer.svelte';
 	let formData = $state({
 		identifiant: '',
 		password: '',
@@ -17,8 +17,9 @@
 			await schemaSignin.validate(formData, { abortEarly: false });
 			errors = {};
 			requestPost('auth/signin', formData).then((res) => {
-				if (res.status === 201) {
-					console.log(res);
+				if (res.status === 201 && typeof window !== undefined) {
+					window.localStorage.setItem('token', res.response.connexion_token);
+					goto('/accueil');
 				}
 			});
 		} catch (err: any) {
