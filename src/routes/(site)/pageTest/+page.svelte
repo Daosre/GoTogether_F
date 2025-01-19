@@ -1,8 +1,12 @@
-<script>
+<script lang="ts">
 	import { CalendarClock } from 'lucide-svelte';
 	import InputForm from '../../../components/input/InputForm.svelte';
 	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import { schemaEvent } from '../../../validator/event';
+	import { validValueForm } from '../../../utils/validValueForm';
+	import { requestPost } from '../../../services/requestPost';
+	import { goto } from '$app/navigation';
+	import { extractErrors } from '../../../utils/extractErrorsForm';
 	let formData = $state({
 		name: '',
 		categoryName: '',
@@ -13,18 +17,33 @@
 		price: null,
 		description: '',
 	});
-	let errors = $state({});
+	let errors: any = $state({});
+	async function submitHandler() {
+		try {
+			await schemaEvent.validate(formData, { abortEarly: false });
+			errors = {};
+			requestPost('auth/signin', formData).then((res) => {
+				if (res.status === 201 && typeof window !== undefined) {
+					window.localStorage.setItem('token', res.response.connexion_token);
+					goto('/accueil');
+				}
+			});
+		} catch (err: any) {
+			errors = extractErrors(err);
+		}
+	}
 </script>
 
 <main class="flex grow flex-col items-center justify-center gap-7 px-5 py-4">
 	<h1 class="font-['Damion'] text-[40px]">Création d'évènement</h1>
 	<form
+		onsubmit={submitHandler}
 		class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white px-5 py-5 xl:w-1/4"
 	>
 		<InputForm
 			label="Titre"
 			placeholder="Titre..."
-			value={formData}
+			bind:value={formData}
 			error={errors}
 			name="name"
 			schema={schemaEvent}
@@ -33,7 +52,7 @@
 		<InputForm
 			label="Catégorie"
 			placeholder="Catégorie..."
-			value={formData}
+			bind:value={formData}
 			error={errors}
 			name="categoryName"
 			schema={schemaEvent}
@@ -41,7 +60,7 @@
 		<InputForm
 			label="Ville"
 			placeholder="Ville..."
-			value={formData}
+			bind:value={formData}
 			error={errors}
 			name="city"
 			schema={schemaEvent}
@@ -49,7 +68,7 @@
 		<InputForm
 			label="Adresse"
 			placeholder="Adresse..."
-			value={formData}
+			bind:value={formData}
 			error={errors}
 			name="address"
 			schema={schemaEvent}
@@ -58,31 +77,49 @@
 		<InputForm
 			label="Date"
 			type="datetime-local"
-			value={formData}
+			bind:value={formData}
 			error={errors}
 			name="time"
 			schema={schemaEvent}
 		/>
-		<!-- <input
-			id="test"
-			type="datetime-local"
-			class="Agdasima flex h-12 w-full appearance-none justify-center rounded-xl text-center text-xl shadow-[inset_2px_-2px_2px_0_rgba(33,33,33,0.5),inset_-2px_2px_2px_0_rgba(33,33,33,0.5)] outline-none placeholder:text-black placeholder:opacity-20"
-		/>
-		<label for="test">
-			<CalendarClock class=" bottom-[13px] right-2.5" />
-		</label> -->
 		<InputForm
 			label="Participant"
 			placeholder="20"
 			type="number"
-			value={formData}
+			bind:value={formData}
 			error={errors}
 			name="maxParticipants"
 			schema={schemaEvent}
 		/>
-
+		<InputForm
+			label="Prix"
+			placeholder="Prix"
+			type="number"
+			bind:value={formData}
+			error={errors}
+			name="price"
+			schema={schemaEvent}
+		/>
+		<div class="flex w-72 flex-col">
+			<div class="flex items-center gap-2 px-2">
+				<label class="GrandiFlora whitespace-nowrap text-xl" for="description"> Description </label>
+				<hr class="relative top-1 w-full border-black" />
+			</div>
+			<input
+				class="Agdasima flex h-12 justify-center rounded-xl text-center text-xl shadow-[inset_2px_-2px_2px_0_rgba(33,33,33,0.5),inset_-2px_2px_2px_0_rgba(33,33,33,0.5)] outline-none placeholder:text-black placeholder:opacity-20"
+				name="descritpion"
+				id="description"
+				oninput={async (e) => {
+					errors = await validValueForm(formData, 'description', errors, schemaEvent);
+				}}
+				bind:value={formData.description}
+				placeholder="Description..."
+			/>
+			{#if errors['description']}<span class="text-center text-redError"
+					>{errors['description']}</span
+				>{/if}
+		</div>
 		<InputSubmit text="Crée l'évènement" />
 		<p>Pas encore inscrit ? <a href="signup" class="text-green">Rejoignez-nous .</a></p>
 	</form>
 </main>
-<!-- onsubmit={submitHandler} -->

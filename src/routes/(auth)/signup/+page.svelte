@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import Footer from '../../../components/h.f/footer.svelte';
 	import InputForm from '../../../components/input/InputForm.svelte';
 	import InputSubmit from '../../../components/input/InputSubmit.svelte';
-	import Logo from '../../../components/logo.svelte';
 	import { requestPost } from '../../../services/requestPost';
+	import { extractErrors } from '../../../utils/extractErrorsForm';
 	import type { signupErrorType, validationError } from '../../../utils/type';
 	import { validValueForm } from '../../../utils/validValueForm';
 	import { schemaSignup } from '../../../validator/signup';
@@ -33,16 +32,8 @@
 			errors = extractErrors(err);
 		}
 	}
-	function extractErrors(err: validationError) {
-		return err.inner.reduce((acc, err) => {
-			return { ...acc, [err.path]: err.message };
-		}, {});
-	}
 </script>
 
-<header class="mt-4 flex justify-center">
-	<Logo />
-</header>
 <main class="flex grow flex-col items-center gap-7 px-5 py-4">
 	<h1 class="font-['Damion'] text-[40px]">Inscription</h1>
 	<form
@@ -52,7 +43,7 @@
 		<InputForm
 			label="Identifiant"
 			placeholder="Identifiant..."
-			value={formData}
+			bind:value={formData}
 			error={errors}
 			name="userName"
 			schema={schemaSignup}
@@ -62,14 +53,14 @@
 				label="Nom"
 				name="lastName"
 				placeholder="Nom..."
-				value={formData}
+				bind:value={formData}
 				error={errors}
 				schema={schemaSignup}
 			/>
 			<InputForm
 				label="Prénom"
 				placeholder="Prénom..."
-				value={formData}
+				bind:value={formData}
 				error={errors}
 				name="firstName"
 				schema={schemaSignup}
@@ -79,7 +70,7 @@
 			<InputForm
 				label="Téléphone"
 				placeholder="N° +33 25 26 54 58..."
-				value={formData}
+				bind:value={formData}
 				error={errors}
 				name="phone"
 				schema={schemaSignup}
@@ -88,7 +79,7 @@
 				label="Email"
 				placeholder="Email..."
 				type="email"
-				value={formData}
+				bind:value={formData}
 				error={errors}
 				name="email"
 				schema={schemaSignup}
@@ -99,7 +90,7 @@
 				label="Mot de passe"
 				placeholder="Mot de passe..."
 				type="password"
-				value={formData}
+				bind:value={formData}
 				error={errors}
 				name="password"
 				schema={schemaSignup}
@@ -120,8 +111,8 @@
 					id="checkbox"
 					type="checkbox"
 					class="checkbox"
+					bind:checked={formData.checkbox}
 					onclick={async () => {
-						formData.checkbox = !formData.checkbox;
 						errors = await validValueForm(formData, 'checkbox', errors, schemaSignup);
 					}}
 				/>
@@ -138,6 +129,3 @@
 		<p>Déjà inscrit ? <a href="signin" class="text-[#4E5C08]">Connecter-vous .</a></p>
 	</form>
 </main>
-<footer class="!bg-black">
-	<Footer />
-</footer>
