@@ -1,12 +1,13 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import '../../app.css';
-	let isDark: boolean = $state(false);
+	let isDark: { get: () => boolean } = getContext('isDark');
 </script>
 
 <article
-	class="bg-floralWhite h-[70px] w-full border-t border-black md:h-[94px] lg:h-[116px] {isDark
-		? 'footerDM'
-		: 'footerLM'}"
+	class="h-[70px] w-full border-t border-black bg-floralWhite md:h-[94px] lg:h-[116px] {isDark.get()
+		? 'bg-black'
+		: 'bg-white'}"
 >
 	<ol
 		class="Lato flex items-center justify-center gap-10 p-2 text-[13px] md:text-[16px] lg:text-[24px]"

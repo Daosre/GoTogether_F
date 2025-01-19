@@ -4,8 +4,8 @@
 	import { persist, createLocalStorage } from '@macfja/svelte-persistent-store';
 	import { writable } from 'svelte/store';
 	let { children } = $props();
-	let isDark = persist(writable(true), createLocalStorage(), 'isDark');
-	setContext('isDark', { get: () => $isDark, set: () => ($isDark = !$isDark) });
+	// let isDark = persist(writable(true), createLocalStorage(), 'isDark');
+	// setContext('isDark', { get: () => $isDark, set: () => ($isDark = !$isDark) });
 </script>
 
 <Header />
