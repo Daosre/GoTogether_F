@@ -32,5 +32,3 @@
 	/>
 	{#if error[name]}<span class="text-center text-redError">{error[name]}</span>{/if}
 </div>
-
-<!-- value[name] = (e.target as HTMLInputElement).value; -->

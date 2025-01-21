@@ -13,5 +13,5 @@
 >
 	<Logoh />
 	<Darkmode />
-	<Menu class={isDark.get() ? 'burgerDM' : 'burgerLM'} />
+	<Menu class="{isDark.get() ? 'burgerDM' : 'burgerLM'} lg:hidden" />
 </header>

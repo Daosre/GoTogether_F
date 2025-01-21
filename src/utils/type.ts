@@ -48,3 +48,12 @@ export type eventType = {
 	price: number;
 	time: string;
 };
+export type userType = {
+	id:string;
+	userName:string;
+	firstName:string;
+	lastName:string;
+	phone:string;
+	email:string;
+	isActive:boolean;
+}

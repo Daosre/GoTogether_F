@@ -37,6 +37,8 @@
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
+		"flowbite": "^2.5.2",
+		"flowbite-svelte": "^0.47.4",
 		"lucide-svelte": "^0.471.0",
 		"svelte-french-toast": "^1.2.0",
 		"svelte-typewriter": "^3.2.3",
