@@ -149,3 +149,14 @@
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
+.logout:hover {
+	width: 32px;
+	height: 32px;
+	transition-duration: 0.5s;
+}
+
+.avatar:hover {
+	width: 32px;
+	height: 32px;
+	transition-duration: 0.5s;
+}
