@@ -25,11 +25,12 @@
 		{type}
 		id={label}
 		oninput={async (e) => {
-			value[name] = (e.target as HTMLInputElement).value;
 			error = await validValueForm(value, name, error, schema);
 		}}
-		value={value[name]}
+		bind:value={value[name]}
 		{placeholder}
 	/>
 	{#if error[name]}<span class="text-center text-redError">{error[name]}</span>{/if}
 </div>
+
+<!-- value[name] = (e.target as HTMLInputElement).value; -->

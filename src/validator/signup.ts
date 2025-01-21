@@ -28,6 +28,6 @@ export const schemaSignup = yup.object({
 		}),
 	checkbox: yup
 		.boolean()
-		.oneOf([true], 'You must accept the terms and conditions')
-		.required('This field is required')
+		.oneOf([false], 'You must accept the terms and conditions')
+		.required('This field is required'),
 });

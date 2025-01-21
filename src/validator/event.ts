@@ -3,7 +3,7 @@ export const schemaEvent = yup.object({
 	name: yup
 		.string()
 		.required('Ce champ est requis !')
-		.min(10, 'Minimum 10 caractères')
+		.min(3, 'Minimum 3 caractères')
 		.max(50, 'Maximum 50 caractères'),
 	categoryName: yup
 		.string()
@@ -16,7 +16,7 @@ export const schemaEvent = yup.object({
 		.required('Ce champ est requis !')
 		.min(3, 'Minimum 3 caractères')
 		.max(255, 'Maximum 255 caractères'),
-	time: yup.string().required('Ce champ est requis !'),
+	time: yup.date().typeError('Veuillez entrer une date valide.').required('Ce champ est requis !'),
 	maxParticipants: yup
 		.number()
 		.required('Ce champ est requis !')
