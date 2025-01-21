@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Event from '../../../components/event.svelte';
-	import SearchBar from '../../../components/searchBar.svelte';
+	import SearchBar from '../../../components/searchBar/searchBar.svelte';
 	import { requestGet } from '../../../services/requestGet';
 	import type { getEventListResponseType } from '../../../utils/type';
 	let search = $state('');
@@ -9,6 +9,7 @@
 	$effect(() => {
 		search;
 		location;
+		console.log(search, location);
 		const delay = setTimeout(() => {
 			requestGet(`evenement/search?search=${search}&location=${location}`).then((res) => {
 				if (res.response) {
@@ -23,7 +24,7 @@
 </script>
 
 <main class="grow">
-	<SearchBar bind:search bind:location />
+	<SearchBar bind:search {location} />
 	{#if responseEventList}
 		{#each responseEventList.data}
 			<Event />
