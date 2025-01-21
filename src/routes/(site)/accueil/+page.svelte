@@ -9,7 +9,6 @@
 	$effect(() => {
 		search;
 		location;
-		console.log(search, location);
 		const delay = setTimeout(() => {
 			requestGet(`evenement/search?search=${search}&location=${location}`).then((res) => {
 				if (res.response) {
@@ -24,7 +23,7 @@
 </script>
 
 <main class="grow">
-	<SearchBar bind:search {location} />
+	<SearchBar bind:search bind:location />
 	{#if responseEventList}
 		{#each responseEventList.data}
 			<Event />

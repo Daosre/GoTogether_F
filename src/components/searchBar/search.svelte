@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Search } from 'lucide-svelte';
-
 	let { search = $bindable() } = $props();
 </script>
 
