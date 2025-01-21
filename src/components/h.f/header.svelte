@@ -4,7 +4,7 @@
 	import Darkmode from '../darkMode/darkmode.svelte';
 	import Avatar from '../icon/avatar.svelte';
 	import Deco from '../icon/deco.svelte';
-	import NavA from '../nav/navA.svelte';
+	import NavV from '../nav/navV.svelte';
 	import Logoh from './logoh.svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
 </script>
@@ -15,7 +15,7 @@
 		: 'lightmode'}"
 >
 	<Logoh />
-	<NavA />
+	<NavV />
 	<Avatar />
 	<Deco />
 	<Darkmode />
