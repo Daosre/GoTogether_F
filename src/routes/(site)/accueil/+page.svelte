@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Event from '../../../components/event.svelte';
-	import SearchBar from '../../../components/searchBar.svelte';
+	import SearchBar from '../../../components/searchBar/searchBar.svelte';
 	import { requestGet } from '../../../services/requestGet';
 	import type { getEventListResponseType } from '../../../utils/type';
 	let search = $state('');
