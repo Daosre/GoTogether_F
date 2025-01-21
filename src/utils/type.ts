@@ -36,6 +36,7 @@ export type getEventListResponseType = {
 };
 export type eventType = {
 	id: string;
+	user: { userName: string };
 	address: string;
 	category: {
 		name: string;
@@ -47,13 +48,14 @@ export type eventType = {
 	name: string;
 	price: number;
 	time: string;
+	_count: { userParticipate: number };
 };
 export type userType = {
-	id:string;
-	userName:string;
-	firstName:string;
-	lastName:string;
-	phone:string;
-	email:string;
-	isActive:boolean;
-}
+	id: string;
+	userName: string;
+	firstName: string;
+	lastName: string;
+	phone: string;
+	email: string;
+	isActive: boolean;
+};
