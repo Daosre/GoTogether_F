@@ -6,6 +6,7 @@ export async function requestPost(pathName: string, data: any) {
 		method: 'POST',
 		headers: {
 			'content-type': 'application/json; charset=utf-8',
+			Authorization: `Bearer ${window.localStorage.getItem('token')}`,
 		},
 		body: JSON.stringify(data),
 	};

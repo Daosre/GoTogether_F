@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { CalendarClock } from 'lucide-svelte';
 	import InputForm from '../../../components/input/InputForm.svelte';
 	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import { schemaEvent } from '../../../validator/event';
@@ -7,6 +6,9 @@
 	import { requestPost } from '../../../services/requestPost';
 	import { goto } from '$app/navigation';
 	import { extractErrors } from '../../../utils/extractErrorsForm';
+	import { date } from 'yup';
+	import type { eventErrorType } from '../../../utils/type';
+	import { disconnect } from '../../../utils/token';
 	let formData = $state({
 		name: '',
 		categoryName: '',
@@ -14,17 +16,21 @@
 		address: '',
 		time: '',
 		maxParticipants: null,
-		price: null,
+		price: 0,
 		description: '',
 	});
-	let errors: any = $state({});
+	let errors: eventErrorType = $state({});
 	async function submitHandler() {
 		try {
 			await schemaEvent.validate(formData, { abortEarly: false });
 			errors = {};
-			requestPost('auth/signin', formData).then((res) => {
-				if (res.status === 201 && typeof window !== undefined) {
-					window.localStorage.setItem('token', res.response.connexion_token);
+			formData.time = formData.time + ':00Z';
+			requestPost('evenement/create', formData).then((res) => {
+				console.log(res);
+				if (res.status === 401) {
+					disconnect();
+				}
+				if (res.status === 201) {
 					goto('/accueil');
 				}
 			});
@@ -105,8 +111,8 @@
 				<label class="GrandiFlora whitespace-nowrap text-xl" for="description"> Description </label>
 				<hr class="relative top-1 w-full border-black" />
 			</div>
-			<input
-				class="Agdasima flex h-12 justify-center rounded-xl text-center text-xl shadow-[inset_2px_-2px_2px_0_rgba(33,33,33,0.5),inset_-2px_2px_2px_0_rgba(33,33,33,0.5)] outline-none placeholder:text-black placeholder:opacity-20"
+			<textarea
+				class="Agdasima flex h-12 min-h-12 justify-center rounded-xl text-center text-xl shadow-[inset_2px_-2px_2px_0_rgba(33,33,33,0.5),inset_-2px_2px_2px_0_rgba(33,33,33,0.5)] outline-none placeholder:text-black placeholder:opacity-20"
 				name="descritpion"
 				id="description"
 				oninput={async (e) => {
@@ -114,12 +120,11 @@
 				}}
 				bind:value={formData.description}
 				placeholder="Description..."
-			/>
+			></textarea>
 			{#if errors['description']}<span class="text-center text-redError"
 					>{errors['description']}</span
 				>{/if}
 		</div>
 		<InputSubmit text="Crée l'évènement" />
-		<p>Pas encore inscrit ? <a href="signup" class="text-green">Rejoignez-nous .</a></p>
 	</form>
 </main>

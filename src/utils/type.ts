@@ -19,6 +19,16 @@ export type signupErrorType = {
 	confirmPassword?: string;
 	checkbox?: boolean;
 };
+export type eventErrorType = {
+	name?: string;
+	categoryName?: string;
+	city?: string;
+	address?: string;
+	time?: string;
+	maxParticipants?: number;
+	price?: number;
+	description?: string;
+};
 export type getEventListResponseType = {
 	countEvent: number;
 	data: [eventType];
