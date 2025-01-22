@@ -8,7 +8,7 @@
 	<h1 class="Damion text-[64px] font-bold">{page.status}</h1>
 	<h2 class="Agdasima text-wrap text-[32px] font-bold">
 		{#if page.status === 404}
-			La page demandée introuvable
+			La page est introuvable
 		{:else if page.status === 500}
 			Nous rencontrons un problème avec le serveur
 		{/if}

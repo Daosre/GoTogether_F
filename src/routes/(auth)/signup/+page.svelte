@@ -4,6 +4,7 @@
 	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import { requestPost } from '../../../services/requestPost';
 	import { extractErrors } from '../../../utils/extractErrorsForm';
+	import { handleError } from '../../../utils/handleError';
 	import type { signupErrorType, validationError } from '../../../utils/type';
 	import { validValueForm } from '../../../utils/validValueForm';
 	import { schemaSignup } from '../../../validator/signup';
@@ -24,6 +25,7 @@
 			await schemaSignup.validate(formData, { abortEarly: false });
 			errors = {};
 			requestPost('auth/signup', formData).then((res) => {
+				handleError(res.status)
 				if (res.status === 201) {
 					goto('/signin');
 				}

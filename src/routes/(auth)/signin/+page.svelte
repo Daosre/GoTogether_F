@@ -6,6 +6,7 @@
 	import { schemaSignin } from '../../../validator/signin';
 	import { requestPost } from '../../../services/requestPost';
 	import { extractErrors } from '../../../utils/extractErrorsForm';
+	import { handleError } from '../../../utils/handleError';
 	let formData = $state({
 		identifiant: '',
 		password: '',
@@ -16,6 +17,7 @@
 			await schemaSignin.validate(formData, { abortEarly: false });
 			errors = {};
 			requestPost('auth/signin', formData).then((res) => {
+				handleError(res.status);
 				if (res.status === 201 && typeof window !== undefined) {
 					window.localStorage.setItem('token', res.response.connexion_token);
 					goto('/accueil');
