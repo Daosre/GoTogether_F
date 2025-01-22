@@ -30,21 +30,23 @@
 		location;
 		isReloadNeeded = false;
 		const delay = setTimeout(() => {
-			requestGet(`evenement/search?search=${search}&location=${location}`).then((res) => {
-				console.log(res);
-				if (res.status === 401) {
-					disconnect();
-				} else if (res.status === 200) {
-					response = res.response;
-				}
-			});
+			requestGet(`evenement/search?page=${page}&search=${search}&location=${location}`).then(
+				(res) => {
+					console.log(res);
+					if (res.status === 401) {
+						disconnect();
+					} else if (res.status === 200) {
+						response = res.response;
+					}
+				},
+			);
 		}, 500);
 		return () => {
 			clearTimeout(delay);
 		};
 	});
 	function handleDelete(id: string) {
-		requestDelete(`user/${id}`).then((res) => {
+		requestDelete(`evenement/delete/${id}`).then((res) => {
 			if (res.status === 401) {
 				disconnect();
 			} else if (res.status === 200) {
@@ -85,7 +87,7 @@
 								>{new Date(data.time).toLocaleString('fr-FR', formatDate)}</TableBodyCell
 							>
 							<TableBodyCell>{data.city}</TableBodyCell>
-							<TableBodyCell>{data.price}</TableBodyCell>
+							<TableBodyCell>{data.price === 0 ? 'gratuit' : data.price}</TableBodyCell>
 							<TableBodyCell>{data._count.userParticipate}</TableBodyCell>
 							<TableBodyCell
 								><PenLine class=" m-auto cursor-pointer !border-none !p-0" /></TableBodyCell
