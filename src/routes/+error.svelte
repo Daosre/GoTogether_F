@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import Footer from '../components/h.f/footer.svelte';
 	import Header from '../components/h.f/header.svelte';
 </script>
 
@@ -14,3 +15,4 @@
 		{/if}
 	</h2>
 </main>
+<Footer lang="fr" />

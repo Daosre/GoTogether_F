@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import InputForm from '../../../components/input/InputForm.svelte';
-	import InputSubmit from '../../../components/input/InputSubmit.svelte';
-	import { requestPost } from '../../../services/requestPost';
-	import { extractErrors } from '../../../utils/extractErrorsForm';
-	import { handleError } from '../../../utils/handleError';
-	import type { signupErrorType, validationError } from '../../../utils/type';
-	import { validValueForm } from '../../../utils/validValueForm';
-	import { schemaSignup } from '../../../validator/signup';
+	import { getContext } from 'svelte';
+	import Translate from '../../../../components/h.f/translate.svelte';
+	import InputForm from '../../../../components/input/InputForm.svelte';
+	import InputSubmit from '../../../../components/input/InputSubmit.svelte';
+	import { requestPost } from '../../../../services/requestPost';
+	import { extractErrors } from '../../../../utils/extractErrorsForm';
+	import { handleError } from '../../../../utils/handleError';
+	import { language, type langType } from '../../../../utils/translations/language';
+	import type { signupErrorType } from '../../../../utils/type';
+	import { validValueForm } from '../../../../utils/validValueForm';
+	import { schemaSignup } from '../../../../validator/signup';
 
 	let formData = $state({
 		userName: '',
@@ -25,7 +28,7 @@
 			await schemaSignup.validate(formData, { abortEarly: false });
 			errors = {};
 			requestPost('auth/signup', formData).then((res) => {
-				handleError(res.status)
+				handleError(res.status);
 				if (res.status === 201) {
 					goto('/signin');
 				}
@@ -34,17 +37,24 @@
 			errors = extractErrors(err);
 		}
 	}
+	let { data } = $props();
+	let lang: { get: () => keyof typeof language } = getContext('lang');
+	let translation = $state(language[lang.get()]);
+	$effect(() => {
+		translation = language[lang.get()];
+	});
 </script>
 
 <main class="flex grow flex-col items-center gap-7 px-5 py-4">
-	<h1 class="font-['Damion'] text-[40px]">Inscription</h1>
+	<Translate {data} />
+	<h1 class="font-['Damion'] text-[40px]">{translation.signup.inscription}</h1>
 	<form
 		onsubmit={submitHandler}
 		class="mb-5 flex flex-col items-center gap-5 rounded border border-[#212121] bg-[#FFF4E9] px-5 py-5 lg:px-20"
 	>
 		<InputForm
-			label="Identifiant"
-			placeholder="Identifiant..."
+			label={translation.signup.identifier}
+			placeholder="{translation.signup.identifier}..."
 			bind:value={formData}
 			error={errors}
 			name="userName"
@@ -52,16 +62,16 @@
 		/>
 		<div class="flex flex-col gap-5 gap-x-32 lg:flex-row">
 			<InputForm
-				label="Nom"
+				label={translation.signup.lastName}
 				name="lastName"
-				placeholder="Nom..."
+				placeholder="{translation.signup.lastName}..."
 				bind:value={formData}
 				error={errors}
 				schema={schemaSignup}
 			/>
 			<InputForm
-				label="Prénom"
-				placeholder="Prénom..."
+				label={translation.signup.firstName}
+				placeholder="{translation.signup.firstName}..."
 				bind:value={formData}
 				error={errors}
 				name="firstName"
@@ -70,7 +80,7 @@
 		</div>
 		<div class="flex flex-col gap-5 gap-x-32 lg:flex-row">
 			<InputForm
-				label="Téléphone"
+				label={translation.signup.phone}
 				placeholder="N° +33 25 26 54 58..."
 				bind:value={formData}
 				error={errors}
@@ -78,8 +88,8 @@
 				schema={schemaSignup}
 			/>
 			<InputForm
-				label="Email"
-				placeholder="Email..."
+				label={translation.signup.email}
+				placeholder="{translation.signup.email}..."
 				type="email"
 				bind:value={formData}
 				error={errors}
@@ -89,8 +99,8 @@
 		</div>
 		<div class="flex flex-col gap-5 gap-x-32 lg:flex-row">
 			<InputForm
-				label="Mot de passe"
-				placeholder="Mot de passe..."
+				label={translation.signup.password}
+				placeholder="{translation.signup.password}..."
 				type="password"
 				bind:value={formData}
 				error={errors}
@@ -98,8 +108,8 @@
 				schema={schemaSignup}
 			/>
 			<InputForm
-				label="Confirmation"
-				placeholder="Mot de passe..."
+				label={translation.signup.confirmPassword}
+				placeholder="{translation.signup.password}..."
 				type="password"
 				bind:value={formData}
 				error={errors}
@@ -121,13 +131,18 @@
 				<span class="checkmark"></span>
 			</div>
 			<label for="checkbox" class="Agdasima cursor-pointer text-center text-[#212121]"
-				>J’accepte les termes et conditions <br />d’utilisation</label
+				>{translation.signup.checkbox}</label
 			>
 		</div>
 		{#if errors['checkbox']}
 			<p class="text-center text-red-600">{errors['checkbox']}</p>
 		{/if}
 		<InputSubmit text="Inscription" />
-		<p>Déjà inscrit ? <a href="signin" class="text-[#4E5C08]">Connecter-vous .</a></p>
+		<p>
+			{translation.signup.alreadyRegistered}
+			<a href="signin" class="text-[#4E5C08]">
+				{translation.signup.redirectLogIn}
+			</a>
+		</p>
 	</form>
 </main>

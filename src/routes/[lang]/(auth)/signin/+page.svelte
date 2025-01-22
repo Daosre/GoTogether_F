@@ -1,12 +1,13 @@
 <script lang="ts">
-	import InputForm from '../../../components/input/InputForm.svelte';
-	import type { signupErrorType, validationError } from '../../../utils/type';
-	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import { goto } from '$app/navigation';
-	import { schemaSignin } from '../../../validator/signin';
-	import { requestPost } from '../../../services/requestPost';
-	import { extractErrors } from '../../../utils/extractErrorsForm';
-	import { handleError } from '../../../utils/handleError';
+	import InputForm from '../../../../components/input/InputForm.svelte';
+	import InputSubmit from '../../../../components/input/InputSubmit.svelte';
+	import { requestPost } from '../../../../services/requestPost';
+	import { extractErrors } from '../../../../utils/extractErrorsForm';
+	import { handleError } from '../../../../utils/handleError';
+	import type { signupErrorType } from '../../../../utils/type';
+	import { schemaSignin } from '../../../../validator/signin';
+
 	let formData = $state({
 		identifiant: '',
 		password: '',
