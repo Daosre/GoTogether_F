@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Typewriter from 'svelte-typewriter';
 	import '../app.css';
-	import Footer from '../components/h.f/footer.svelte';
 	import Logo from '../components/logo.svelte';
 </script>
 

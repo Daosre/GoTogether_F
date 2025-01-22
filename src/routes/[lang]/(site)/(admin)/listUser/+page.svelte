@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { ArrowLeft, ArrowRight, PenLine, Trash2Icon } from 'lucide-svelte';
-	import Search from '../../../../components/searchBar/search.svelte';
+	import { PenLine, Trash2Icon } from 'lucide-svelte';
 	import {
 		TableBody,
 		TableBodyCell,
@@ -9,12 +8,13 @@
 		TableHeadCell,
 		Table,
 	} from 'flowbite-svelte';
-	import { requestGet } from '../../../../services/requestGet';
-	import { disconnect } from '../../../../utils/token';
-	import type { userType } from '../../../../utils/type';
-	import { requestDelete } from '../../../../services/requestDelete';
-	import Pagination from '../../../../components/pagination.svelte';
-	import { handleError } from '../../../../utils/handleError';
+	import type { userType } from '../../../../../utils/type';
+	import { requestGet } from '../../../../../services/requestGet';
+	import { handleError } from '../../../../../utils/handleError';
+	import { requestDelete } from '../../../../../services/requestDelete';
+	import Search from '../../../../../components/searchBar/search.svelte';
+	import Pagination from '../../../../../components/pagination.svelte';
+
 	let page = $state(0);
 	let search = $state('');
 	let response: { data?: userType[]; isNextPage?: boolean } = $state({});
@@ -29,9 +29,8 @@
 		isReloadNeeded = false;
 		const delay = setTimeout(() => {
 			requestGet(`user/List?page=${page}&search=${search}`).then((res) => {
-				if (res.status === 401) {
-					disconnect();
-				} else if (res.status === 200) {
+				handleError(res.status);
+				if (res.status === 200) {
 					response = res.response;
 				}
 			});

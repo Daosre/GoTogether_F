@@ -1,9 +1,10 @@
 <script lang="ts">
-	import Event from '../../../components/event.svelte';
-	import SearchBar from '../../../components/searchBar/searchBar.svelte';
-	import { requestGet } from '../../../services/requestGet';
-	import { handleError } from '../../../utils/handleError';
-	import type { getEventListResponseType } from '../../../utils/type';
+	import Event from '../../../../components/event.svelte';
+	import SearchBar from '../../../../components/searchBar/searchBar.svelte';
+	import { requestGet } from '../../../../services/requestGet';
+	import { handleError } from '../../../../utils/handleError';
+	import type { getEventListResponseType } from '../../../../utils/type';
+
 	let search = $state('');
 	let location = $state('');
 	let responseEventList: getEventListResponseType | undefined = $state();

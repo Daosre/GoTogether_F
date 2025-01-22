@@ -8,14 +8,14 @@
 		TableHeadCell,
 		Table,
 	} from 'flowbite-svelte';
-	import { requestGet } from '../../../../services/requestGet';
-	import { disconnect } from '../../../../utils/token';
-	import type { eventType, userType } from '../../../../utils/type';
-	import { requestDelete } from '../../../../services/requestDelete';
-	import Pagination from '../../../../components/pagination.svelte';
-	import SearchBar from '../../../../components/searchBar/searchBar.svelte';
-	import { formatDate } from '../../../../utils/const';
-	import { handleError } from '../../../../utils/handleError';
+	import type { eventType } from '../../../../../utils/type';
+	import { requestGet } from '../../../../../services/requestGet';
+	import { handleError } from '../../../../../utils/handleError';
+	import { requestDelete } from '../../../../../services/requestDelete';
+	import SearchBar from '../../../../../components/searchBar/searchBar.svelte';
+	import { formatDate } from '../../../../../utils/const';
+	import Pagination from '../../../../../components/pagination.svelte';
+
 	let page = $state(0);
 	let search = $state('');
 	let location = $state('');
@@ -47,9 +47,8 @@
 	});
 	function handleDelete(id: string) {
 		requestDelete(`evenement/delete/${id}`).then((res) => {
-			if (res.status === 401) {
-				disconnect();
-			} else if (res.status === 200) {
+			handleError(res.status);
+			if (res.status === 200) {
 				isReloadNeeded = true;
 				page = 0;
 			}
