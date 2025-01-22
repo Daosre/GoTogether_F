@@ -1,8 +1,10 @@
 <script lang="ts">
-	import Event from '../../../components/event.svelte';
-	import SearchBar from '../../../components/searchBar/searchBar.svelte';
-	import { requestGet } from '../../../services/requestGet';
-	import type { getEventListResponseType } from '../../../utils/type';
+	import Event from '../../../../components/event.svelte';
+	import SearchBar from '../../../../components/searchBar/searchBar.svelte';
+	import { requestGet } from '../../../../services/requestGet';
+	import { handleError } from '../../../../utils/handleError';
+	import type { getEventListResponseType } from '../../../../utils/type';
+
 	let search = $state('');
 	let location = $state('');
 	let responseEventList: getEventListResponseType | undefined = $state();
@@ -11,6 +13,7 @@
 		location;
 		const delay = setTimeout(() => {
 			requestGet(`evenement/search?search=${search}&location=${location}`).then((res) => {
+				handleError(res.status);
 				if (res.response) {
 					responseEventList = res.response;
 				}

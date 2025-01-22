@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Logo from '../../components/logo.svelte';
+	import Logo from '../../../components/logo.svelte';
 	let { children } = $props();
 </script>
 

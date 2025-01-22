@@ -1,11 +1,13 @@
 <script lang="ts">
-	import InputForm from '../../../components/input/InputForm.svelte';
-	import type { signupErrorType, validationError } from '../../../utils/type';
-	import InputSubmit from '../../../components/input/InputSubmit.svelte';
 	import { goto } from '$app/navigation';
-	import { schemaSignin } from '../../../validator/signin';
-	import { requestPost } from '../../../services/requestPost';
-	import { extractErrors } from '../../../utils/extractErrorsForm';
+	import InputForm from '../../../../components/input/InputForm.svelte';
+	import InputSubmit from '../../../../components/input/InputSubmit.svelte';
+	import { requestPost } from '../../../../services/requestPost';
+	import { extractErrors } from '../../../../utils/extractErrorsForm';
+	import { handleError } from '../../../../utils/handleError';
+	import type { signupErrorType } from '../../../../utils/type';
+	import { schemaSignin } from '../../../../validator/signin';
+
 	let formData = $state({
 		identifiant: '',
 		password: '',
@@ -16,6 +18,7 @@
 			await schemaSignin.validate(formData, { abortEarly: false });
 			errors = {};
 			requestPost('auth/signin', formData).then((res) => {
+				handleError(res.status);
 				if (res.status === 201 && typeof window !== undefined) {
 					window.localStorage.setItem('token', res.response.connexion_token);
 					goto('/accueil');

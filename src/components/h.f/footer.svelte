@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import '../../app.css';
+	import { language, type langType } from '../../utils/translations/language';
 	let isDark: { get: () => boolean } = getContext('isDark');
+	let lang: { get: () => langType } = getContext('lang');
+	let translation = $state(language[lang.get()]);
+	$effect(() => {
+		translation = language[lang.get()];
+	});
 </script>
 
 <article
@@ -12,8 +18,8 @@
 	<ol
 		class="Lato flex items-center justify-center gap-10 p-2 text-[13px] md:text-[16px] lg:text-[24px]"
 	>
-		<a href="/">Conditions Générales</a>
-		<a href="/">Mentions Légales</a>
+		<a href="/">{translation.footer.condition}</a>
+		<a href="/">{translation.footer.notice}</a>
 	</ol>
 	<a
 		href="/"
