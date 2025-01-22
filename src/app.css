@@ -149,3 +149,7 @@
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
+.borderTable * {
+	border: 1px solid #212121;
+	padding: 5px 20px;
+}
