@@ -15,6 +15,7 @@
 	import Pagination from '../../../../components/pagination.svelte';
 	import SearchBar from '../../../../components/searchBar/searchBar.svelte';
 	import { formatDate } from '../../../../utils/const';
+	import { handleError } from '../../../../utils/handleError';
 	let page = $state(0);
 	let search = $state('');
 	let location = $state('');
@@ -33,9 +34,8 @@
 			requestGet(`evenement/search?page=${page}&search=${search}&location=${location}`).then(
 				(res) => {
 					console.log(res);
-					if (res.status === 401) {
-						disconnect();
-					} else if (res.status === 200) {
+					handleError(res.status);
+					if (res.status === 200) {
 						response = res.response;
 					}
 				},
