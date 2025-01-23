@@ -15,4 +15,4 @@
 		{/if}
 	</h2>
 </main>
-<Footer />
+<Footer lang="en" />

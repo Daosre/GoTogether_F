@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { getContext } from 'svelte';
 	import Translate from '../../../../components/h.f/translate.svelte';
 	import InputForm from '../../../../components/input/InputForm.svelte';
 	import InputSubmit from '../../../../components/input/InputSubmit.svelte';
@@ -11,7 +10,6 @@
 	import type { signupErrorType } from '../../../../utils/type';
 	import { validValueForm } from '../../../../utils/validValueForm';
 	import { schemaSignup } from '../../../../validator/signup';
-
 	let formData = $state({
 		userName: '',
 		firstName: '',
@@ -38,10 +36,9 @@
 		}
 	}
 	let { data } = $props();
-	let lang: { get: () => keyof typeof language } = getContext('lang');
-	let translation = $state(language[lang.get()]);
+	let translation = $state(language[data.lang]);
 	$effect(() => {
-		translation = language[lang.get()];
+		translation = language[data.lang];
 	});
 </script>
 

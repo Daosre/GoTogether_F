@@ -15,6 +15,7 @@
 	import SearchBar from '../../../../../components/searchBar/searchBar.svelte';
 	import { formatDate } from '../../../../../utils/const';
 	import Pagination from '../../../../../components/pagination.svelte';
+	import { language } from '../../../../../utils/translations/language';
 
 	let page = $state(0);
 	let search = $state('');
@@ -54,6 +55,11 @@
 			}
 		});
 	}
+	let { data } = $props();
+	let translation = $state(language[data.lang]);
+	$effect(() => {
+		translation = language[data.lang];
+	});
 </script>
 
 <main class="flex grow flex-col gap-5 px-5 py-10 md:px-20">

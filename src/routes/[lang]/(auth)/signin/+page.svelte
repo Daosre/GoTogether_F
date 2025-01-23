@@ -5,6 +5,7 @@
 	import { requestPost } from '../../../../services/requestPost';
 	import { extractErrors } from '../../../../utils/extractErrorsForm';
 	import { handleError } from '../../../../utils/handleError';
+	import { language } from '../../../../utils/translations/language';
 	import type { signupErrorType } from '../../../../utils/type';
 	import { schemaSignin } from '../../../../validator/signin';
 
@@ -28,17 +29,22 @@
 			errors = extractErrors(err);
 		}
 	}
+	let { data } = $props();
+	let translation = $state(language[data.lang]);
+	$effect(() => {
+		translation = language[data.lang];
+	});
 </script>
 
 <main class="flex grow flex-col items-center justify-center gap-7 px-5 py-4">
-	<h1 class="font-['Damion'] text-[40px]">Connexion</h1>
+	<h1 class="font-['Damion'] text-[40px]">{translation.signin.connection}</h1>
 	<form
 		onsubmit={submitHandler}
 		class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white px-5 py-5 xl:w-1/4"
 	>
 		<InputForm
-			label="Identifiant"
-			placeholder="Identifiant..."
+			label={translation.signin.identifier}
+			placeholder="{translation.signin.identifier}..."
 			bind:value={formData}
 			error={errors}
 			name="identifiant"
@@ -46,8 +52,8 @@
 		/>
 
 		<InputForm
-			label="Mot de passe"
-			placeholder="Mot de passe..."
+			label={translation.signin.password}
+			placeholder="{translation.signin.password}..."
 			type="password"
 			bind:value={formData}
 			error={errors}
@@ -55,7 +61,10 @@
 			schema={schemaSignin}
 		/>
 
-		<InputSubmit text="Connexion" />
-		<p>Pas encore inscrit ? <a href="signup" class="text-green">Rejoignez-nous .</a></p>
+		<InputSubmit text={translation.signin.connection} />
+		<p>
+			{translation.signin.notRegistered}
+			<a href="signup" class="text-green">{translation.signin.redirectSignUp}</a>
+		</p>
 	</form>
 </main>

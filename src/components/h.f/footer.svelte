@@ -3,10 +3,11 @@
 	import '../../app.css';
 	import { language, type langType } from '../../utils/translations/language';
 	let isDark: { get: () => boolean } = getContext('isDark');
-	let lang: { get: () => langType } = getContext('lang');
-	let translation = $state(language[lang.get()]);
+	let { lang }: { lang: langType } = $props();
+	let translation = $state(language[lang]);
 	$effect(() => {
-		translation = language[lang.get()];
+		lang;
+		translation = language[lang];
 	});
 </script>
 

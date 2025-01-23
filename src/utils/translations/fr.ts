@@ -12,6 +12,13 @@ export const fr = {
 		alreadyRegistered: 'Déjà inscrit ?',
 		redirectLogIn: 'Connecter-vous .',
 	},
+	signin: {
+		connection: 'Connexion',
+		identifier: 'Identifiant',
+		password: 'Password',
+		notRegistered: 'Pas encore inscrit ?',
+		redirectSignUp: 'Rejoignez-nous .',
+	},
 	nav: {},
 	footer: { condition: 'Conditions Générales', notice: 'Mentions Légales' },
 };
