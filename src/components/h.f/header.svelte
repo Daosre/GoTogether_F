@@ -7,11 +7,11 @@
 	import Darkmode from '../darkMode/darkmode.svelte';
 	import Avatar from '../icon/avatar.svelte';
 	import Deco from '../icon/deco.svelte';
+	import NavA from '../nav/navA.svelte';
 	import NavU from '../nav/navU.svelte';
+	import NavV from '../nav/navV.svelte';
 	import Logoh from './logoh.svelte';
 	import Translate from './translate.svelte';
-	import NavA from '../nav/navA.svelte';
-	import NavV from '../nav/navV.svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
 	let token: tokenType | null = readToken();
 	let { data } = $props();
@@ -33,7 +33,9 @@
 
 	<Avatar />
 	<Deco />
-	<Darkmode />
-	<Translate {data} />
+	<div class=" flex flex-col items-center gap-5 p-4">
+		<Darkmode />
+		<Translate {data} />
+	</div>
 	<Menu class="{isDark.get() ? 'burgerDM' : 'burgerLM'} lg:hidden" />
 </header>
