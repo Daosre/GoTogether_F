@@ -8,7 +8,6 @@
 	import { schemaEvent } from '../validator/event';
 	import InputForm from './input/InputForm.svelte';
 	import InputSubmit from './input/InputSubmit.svelte';
-
 	let {
 		formData = {
 			name: '',

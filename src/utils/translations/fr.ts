@@ -12,6 +12,22 @@ export const fr = {
 		alreadyRegistered: 'Déjà inscrit ?',
 		redirectLogIn: 'Connecter-vous .',
 	},
-	nav: {},
+	signin: {
+		connection: 'Connexion',
+		identifier: 'Identifiant',
+		password: 'Password',
+		notRegistered: 'Pas encore inscrit ?',
+		redirectSignUp: 'Rejoignez-nous .',
+	},
+	nav: {
+		welcome: 'Accueil',
+		createEvent: 'Crée un évènement',
+		myEvents: 'Mes évènements',
+		myParticipations: 'Mes participations',
+		eventList: 'Liste évènements',
+		userList: 'Liste utilisateurs',
+		signUp: "S'inscrire",
+		logIn: 'Connexion',
+	},
 	footer: { condition: 'Conditions Générales', notice: 'Mentions Légales' },
 };

@@ -8,3 +8,7 @@ export const formatDate: Intl.DateTimeFormatOptions = {
 	minute: '2-digit',
 };
 export const listLanguage: langType[] = ['en', 'fr'];
+export const enum Role {
+	ADMIN = 'Admin',
+	USER = 'User',
+}

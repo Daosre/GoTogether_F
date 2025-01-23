@@ -12,6 +12,22 @@ export const en = {
 		alreadyRegistered: 'Already registered ?',
 		redirectLogIn: 'Log in .',
 	},
-	nav: {},
+	signin: {
+		connection: 'Log in',
+		identifier: 'Identifier',
+		password: 'Password',
+		notRegistered: 'Not yet registered ?',
+		redirectSignUp: 'Join us .',
+	},
+	nav: {
+		welcome: 'Welcome',
+		createEvent: 'Create an event',
+		myEvents: 'My events',
+		myParticipations: 'My participations',
+		eventList: 'Event list',
+		userList: 'User list',
+		signUp:"Sign up",
+		logIn:"Log in",
+	},
 	footer: { condition: 'General condition', notice: 'Legal Notices' },
 };
