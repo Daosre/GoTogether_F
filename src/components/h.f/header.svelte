@@ -14,7 +14,7 @@
 	import Translate from './translate.svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
 	let token: tokenType | null = readToken();
-	let { data } = $props();
+	let { data, isVisible = true } = $props();
 </script>
 
 <header
@@ -35,7 +35,9 @@
 	<Deco />
 	<div class=" flex flex-col items-center gap-5 p-4">
 		<Darkmode />
-		<Translate {data} />
+		{#if isVisible}
+			<Translate {data} />
+		{/if}
 	</div>
 	<Menu class="{isDark.get() ? 'burgerDM' : 'burgerLM'} lg:hidden" />
 </header>
