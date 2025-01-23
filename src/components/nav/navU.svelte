@@ -14,8 +14,8 @@
 		? 'text-white'
 		: 'text-black'} duration-[1.5s]"
 >
-	<li>{translation.nav.welcome}</li>
-	<li>{translation.nav.createEvent}</li>
-	<li>{translation.nav.myEvents}</li>
-	<li>{translation.nav.myParticipations}</li>
+	<li><a href="/{data}/accueil" class="anime"> {translation.nav.welcome}</a></li>
+	<li><a href="/{data}/createEvent" class="anime"> {translation.nav.createEvent}</a></li>
+	<li><a href="/{data}/" class="anime"> {translation.nav.myEvents}</a></li>
+	<li><a href="/{data}/" class="anime"> {translation.nav.myParticipations}</a></li>
 </nav>

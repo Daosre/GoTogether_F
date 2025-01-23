@@ -5,6 +5,7 @@
 	import { handleError } from '../../../../utils/handleError';
 	import type { getEventListResponseType } from '../../../../utils/type';
 
+	let { data } = $props();
 	let search = $state('');
 	let location = $state('');
 	let responseEventList: getEventListResponseType | undefined = $state();
@@ -26,7 +27,7 @@
 </script>
 
 <main class="grow">
-	<SearchBar bind:search bind:location />
+	<SearchBar bind:search bind:location {data} />
 	{#if responseEventList}
 		{#each responseEventList.data}
 			<Event />

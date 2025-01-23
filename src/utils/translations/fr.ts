@@ -29,5 +29,6 @@ export const fr = {
 		signUp: "S'inscrire",
 		logIn: 'Connexion',
 	},
+	search: 'Recherche',
 	footer: { condition: 'Conditions Générales', notice: 'Mentions Légales' },
 };

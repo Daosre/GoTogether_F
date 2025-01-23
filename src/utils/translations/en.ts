@@ -26,8 +26,9 @@ export const en = {
 		myParticipations: 'My participations',
 		eventList: 'Event list',
 		userList: 'User list',
-		signUp:"Sign up",
-		logIn:"Log in",
+		signUp: 'Sign up',
+		logIn: 'Log in',
 	},
+	search: 'Reseach',
 	footer: { condition: 'General condition', notice: 'Legal Notices' },
 };

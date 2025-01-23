@@ -164,3 +164,19 @@
 	border: 1px solid #212121;
 	padding: 5px 20px;
 }
+nav li {
+	position: relative;
+}
+.anime:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: black;
+	transition: 0.8s;
+}
+.anime:hover:after {
+	width: 100%;
+}
