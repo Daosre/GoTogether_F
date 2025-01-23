@@ -167,7 +167,7 @@
 nav li {
 	position: relative;
 }
-.anime:after {
+nav li a:after {
 	content: '';
 	position: absolute;
 	bottom: 0;
@@ -177,6 +177,10 @@ nav li {
 	background-color: black;
 	transition: 0.8s;
 }
-.anime:hover:after {
+.animeBorderWhite li a:after {
+	color: white;
+	background-color: white;
+}
+nav li a:hover:after {
 	width: 100%;
 }
