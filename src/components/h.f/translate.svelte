@@ -11,15 +11,12 @@
 		const newUrl = data.url.replace(page.params.lang, langue);
 		goto(newUrl);
 	}
-	console.log(listFlag[data]);
 </script>
-
 
 <div class="GrandiFlora flex gap-2">
 	{#each listLanguage as dataLang}
-	<button onclick={() => handleClick(dataLang)}
-		><img src={listFlag[dataLang]} alt="flag's language" class="w-[30px]" /></button
-	>
-{/each}
+		<button onclick={() => handleClick(dataLang)}
+			><img src={listFlag[dataLang]} alt="flag's language" class="w-[30px]" /></button
+		>
+	{/each}
 </div>
-
