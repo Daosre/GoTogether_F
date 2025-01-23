@@ -19,6 +19,15 @@ export const fr = {
 		notRegistered: 'Pas encore inscrit ?',
 		redirectSignUp: 'Rejoignez-nous .',
 	},
-	nav: {},
+	nav: {
+		welcome: 'Accueil',
+		createEvent: 'Crée un évènement',
+		myEvents: 'Mes évènements',
+		myParticipations: 'Mes participations',
+		eventList: 'Liste évènements',
+		userList: 'Liste utilisateurs',
+		signUp: "S'inscrire",
+		logIn: 'Connexion',
+	},
 	footer: { condition: 'Conditions Générales', notice: 'Mentions Légales' },
 };

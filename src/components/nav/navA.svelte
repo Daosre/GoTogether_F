@@ -1,6 +1,12 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
+	import { language, type langType } from '../../utils/translations/language';
 	let isDark: { get: () => boolean } = getContext('isDark');
+	let { data }: { data: langType } = $props();
+	let translation = $state(language[data]);
+	$effect(() => {
+		translation = language[data];
+	});
 </script>
 
 <nav
@@ -8,9 +14,10 @@
 		? 'text-white'
 		: 'text-black'} duration-[1.5s]"
 >
-	<li>Accueil</li>
-	<li>Crée un évènement</li>
-	<li>Mes évènements</li>
-	<li>Liste évènements</li>
-	<li>Liste utilisateurs</li>
+	<li>{translation.nav.welcome}</li>
+	<li>{translation.nav.createEvent}</li>
+	<li>{translation.nav.myEvents}</li>
+	<li>{translation.nav.myParticipations}</li>
+	<li>{translation.nav.eventList}</li>
+	<li>{translation.nav.userList}</li>
 </nav>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Header from '../../../components/h.f/header.svelte';
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
-<Header />
+<Header {data} />
 {@render children()}
