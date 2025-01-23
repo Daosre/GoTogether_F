@@ -59,3 +59,9 @@ export type userType = {
 	email: string;
 	isActive: boolean;
 };
+export type tokenType = {
+	exp: number;
+	iat: number;
+	role: string;
+	sub: string;
+};

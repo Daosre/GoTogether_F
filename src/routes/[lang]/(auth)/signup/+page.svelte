@@ -43,7 +43,6 @@
 </script>
 
 <main class="flex grow flex-col items-center gap-7 px-5 py-4">
-	<Translate {data} />
 	<h1 class="font-['Damion'] text-[40px]">{translation.signup.inscription}</h1>
 	<form
 		onsubmit={submitHandler}
