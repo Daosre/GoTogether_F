@@ -11,6 +11,7 @@
 	import Logoh from './logoh.svelte';
 	import Translate from './translate.svelte';
 	import NavA from '../nav/navA.svelte';
+	import NavV from '../nav/navV.svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
 	let token: tokenType | null = readToken();
 	let { data } = $props();
@@ -25,9 +26,9 @@
 	{#if token?.role === Role.ADMIN}
 		<NavA data={data.lang} />
 	{:else if token?.role === Role.USER}
-		<NavA data={data.lang} />
+		<NavU data={data.lang} />
 	{:else}
-		<NavA data={data.lang} />
+		<NavV data={data.lang} />
 	{/if}
 
 	<Avatar />

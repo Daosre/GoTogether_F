@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { getContext } from 'svelte';
-	import type { language } from '../../utils/translations/language';
 	import { listLanguage } from '../../utils/const';
+	import type { language } from '../../utils/translations/language';
 
 	let { data } = $props();
 	function handleClick(langue: keyof typeof language) {
@@ -12,6 +11,8 @@
 	}
 </script>
 
-{#each listLanguage as dataLang}
-	<button onclick={() => handleClick(dataLang)}>{dataLang.toLocaleUpperCase()}</button>
-{/each}
+<div class="GrandiFlora flex gap-2">
+	{#each listLanguage as dataLang}
+		<button class="" onclick={() => handleClick(dataLang)}>{dataLang.toLocaleUpperCase()} </button>
+	{/each}
+</div>
