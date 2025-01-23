@@ -31,13 +31,15 @@
 				<br class="hidden md:block" />
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
 					Des événements pourraient vous intéresser ! <br class="md:hidden" />
-					<a href="/accueil" class="text-[#4E5C08]">Voir les événements</a>
+					<a href="/en/accueil" class="text-[#4E5C08]">Voir les événements</a>
 				</p>
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
-					Participez à des événements ! <a href="/signup" class="text-[#4E5C08]">Inscrivez-vous</a>
+					Participez à des événements ! <a href="/en/signup" class="text-[#4E5C08]"
+						>Inscrivez-vous</a
+					>
 				</p>
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
-					Déjà membre ? <a href="/signin" class="text-[#4E5C08]">Connectez vous</a>
+					Déjà membre ? <a href="/en/signin" class="text-[#4E5C08]">Connectez vous</a>
 				</p>
 			</article>
 		</section>
