@@ -1,21 +1,21 @@
 <script lang="ts">
-	import { PenLine, Trash2Icon } from 'lucide-svelte';
 	import {
+		Table,
 		TableBody,
 		TableBodyCell,
 		TableBodyRow,
 		TableHead,
 		TableHeadCell,
-		Table,
 	} from 'flowbite-svelte';
-	import type { eventType } from '../../../../../utils/type';
-	import { requestGet } from '../../../../../services/requestGet';
-	import { handleError } from '../../../../../utils/handleError';
-	import { requestDelete } from '../../../../../services/requestDelete';
-	import SearchBar from '../../../../../components/searchBar/searchBar.svelte';
-	import { formatDate } from '../../../../../utils/const';
+	import { PenLine, Trash2Icon } from 'lucide-svelte';
 	import Pagination from '../../../../../components/pagination.svelte';
+	import SearchBar from '../../../../../components/searchBar/searchBar.svelte';
+	import { requestDelete } from '../../../../../services/requestDelete';
+	import { requestGet } from '../../../../../services/requestGet';
+	import { formatDate } from '../../../../../utils/const';
+	import { handleError } from '../../../../../utils/handleError';
 	import { language } from '../../../../../utils/translations/language';
+	import type { eventType } from '../../../../../utils/type';
 
 	let page = $state(0);
 	let search = $state('');
