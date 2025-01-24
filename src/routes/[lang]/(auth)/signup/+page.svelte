@@ -20,6 +20,11 @@
 		confirmPassword: '',
 		checkbox: false,
 	});
+	let { data } = $props();
+	let translation = $state(language[data.lang]);
+	$effect(() => {
+		translation = language[data.lang];
+	});
 	let errors: signupErrorType = $state({});
 	async function submitHandler() {
 		try {
@@ -28,18 +33,13 @@
 			requestPost('auth/signup', formData).then((res) => {
 				handleError(res.status);
 				if (res.status === 201) {
-					goto('/signin');
+					goto(`/${data.lang}/signin`);
 				}
 			});
 		} catch (err: any) {
 			errors = extractErrors(err);
 		}
 	}
-	let { data } = $props();
-	let translation = $state(language[data.lang]);
-	$effect(() => {
-		translation = language[data.lang];
-	});
 </script>
 
 <main class="flex grow flex-col items-center gap-7 px-5 py-4">
@@ -121,6 +121,7 @@
 					class="checkbox"
 					bind:checked={formData.checkbox}
 					onclick={async () => {
+						formData.checkbox = !formData.checkbox;
 						errors = await validValueForm(formData, 'checkbox', errors, schemaSignup);
 					}}
 				/>

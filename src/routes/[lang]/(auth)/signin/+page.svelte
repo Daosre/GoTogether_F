@@ -14,6 +14,11 @@
 		password: '',
 	});
 	let errors: signupErrorType = $state({});
+	let { data } = $props();
+	let translation = $state(language[data.lang]);
+	$effect(() => {
+		translation = language[data.lang];
+	});
 	async function submitHandler() {
 		try {
 			await schemaSignin.validate(formData, { abortEarly: false });
@@ -22,18 +27,13 @@
 				handleError(res.status);
 				if (res.status === 201 && typeof window !== undefined) {
 					window.localStorage.setItem('token', res.response.connexion_token);
-					goto('/accueil');
+					goto(`/${data.lang}/accueil`);
 				}
 			});
 		} catch (err: any) {
 			errors = extractErrors(err);
 		}
 	}
-	let { data } = $props();
-	let translation = $state(language[data.lang]);
-	$effect(() => {
-		translation = language[data.lang];
-	});
 </script>
 
 <main class="flex grow flex-col items-center justify-center gap-7 px-5 py-4">

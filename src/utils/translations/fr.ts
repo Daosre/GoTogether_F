@@ -29,6 +29,17 @@ export const fr = {
 		signUp: "S'inscrire",
 		logIn: 'Connexion',
 	},
+	welcome: {
+		title:"Resultats trouvé :",
+		category: 'Catégorie',
+		location: 'Lieu',
+		date: 'Date',
+		time: 'Horaire',
+		participant: 'Participant',
+		price: 'Prix',
+		free:"",
+		moreInformation: "Plus d'information",
+	},
 	search: 'Recherche',
 	footer: { condition: 'Conditions Générales', notice: 'Mentions Légales' },
 };

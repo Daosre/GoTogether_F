@@ -17,7 +17,7 @@
 	import ModalV from '../modal/modalV.svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
 	let token: tokenType | null = readToken();
-	let { data } = $props();
+	let { data, isVisible = true } = $props();
 	let isOpen = $state(false);
 </script>
 
@@ -39,7 +39,9 @@
 	<Deco />
 	<div class=" flex flex-col items-center gap-5 p-4">
 		<Darkmode />
-		<Translate {data} />
+		{#if isVisible}
+			<Translate {data} />
+		{/if}
 	</div>
 	{#if isOpen}
 		{#if token?.role === Role.ADMIN}
