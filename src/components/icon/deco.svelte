@@ -7,5 +7,5 @@
 <LogOut
 	class="logout hidden cursor-pointer {isDark.get()
 		? 'text-white'
-		: 'text-black'} duration-[1.5s] lg:block"
+		: 'text-black'} duration-[1.5s] xl:block"
 />
