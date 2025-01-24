@@ -45,9 +45,9 @@
 		{#if token?.role === Role.ADMIN}
 			<ModalA data={data.lang} bind:isOpen />
 		{:else if token?.role === Role.USER}
-			<ModalV data={data.lang} bind:isOpen />
-		{:else}
 			<ModalU data={data.lang} bind:isOpen />
+		{:else}
+			<ModalV data={data.lang} bind:isOpen />
 		{/if}
 	{/if}
 

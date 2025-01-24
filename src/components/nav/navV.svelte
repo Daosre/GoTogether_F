@@ -21,6 +21,6 @@
 		<a href="/{data}/signin" class="anime">{translation.nav.logIn}</a>
 	</li>
 	<li>
-		<a href="/{data}/singup" class="anime">{translation.nav.signUp}</a>
+		<a href="/{data}/signup" class="anime">{translation.nav.signUp}</a>
 	</li>
 </nav>
