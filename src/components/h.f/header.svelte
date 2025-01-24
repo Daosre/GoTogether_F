@@ -7,14 +7,18 @@
 	import Darkmode from '../darkMode/darkmode.svelte';
 	import Avatar from '../icon/avatar.svelte';
 	import Deco from '../icon/deco.svelte';
+	import ModalA from '../modal/modalA.svelte';
+	import ModalU from '../modal/modalU.svelte';
 	import NavA from '../nav/navA.svelte';
 	import NavU from '../nav/navU.svelte';
 	import NavV from '../nav/navV.svelte';
 	import Logoh from './logoh.svelte';
 	import Translate from './translate.svelte';
+	import ModalV from '../modal/modalV.svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
 	let token: tokenType | null = readToken();
 	let { data, isVisible = true } = $props();
+	let isOpen = $state(false);
 </script>
 
 <header
@@ -39,5 +43,20 @@
 			<Translate {data} />
 		{/if}
 	</div>
-	<Menu class="{isDark.get() ? 'burgerDM' : 'burgerLM'} lg:hidden" />
+	{#if isOpen}
+		{#if token?.role === Role.ADMIN}
+			<ModalA data={data.lang} bind:isOpen />
+		{:else if token?.role === Role.USER}
+			<ModalV data={data.lang} bind:isOpen />
+		{:else}
+			<ModalU data={data.lang} bind:isOpen />
+		{/if}
+	{/if}
+
+	<Menu
+		class="{isDark.get() ? 'burgerDM' : 'burgerLM'} xl:hidden"
+		onclick={() => {
+			isOpen = !isOpen;
+		}}
+	/>
 </header>

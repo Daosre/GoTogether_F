@@ -185,3 +185,33 @@ nav li a:after {
 nav li a:hover:after {
 	width: 100%;
 }
+.slideIn {
+	animation-name: slidein;
+	animation-duration: 2s;
+}
+.slideOut {
+	animation-name: slideOut;
+	animation-duration: 3s;
+}
+@keyframes slidein {
+	from {
+		top: -100%;
+		width: 300%;
+	}
+
+	to {
+		bottom: 0%;
+		width: 100%;
+	}
+}
+@keyframes slideOut {
+	from {
+		bottom: 0%;
+		width: 100%;
+	}
+
+	to {
+		top: -100%;
+		width: 300%;
+	}
+}
