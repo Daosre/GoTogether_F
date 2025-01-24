@@ -33,7 +33,7 @@
 			requestPost('auth/signup', formData).then((res) => {
 				handleError(res.status);
 				if (res.status === 201) {
-					goto(`/${data}/signin`);
+					goto(`/${data.lang}/signin`);
 				}
 			});
 		} catch (err: any) {

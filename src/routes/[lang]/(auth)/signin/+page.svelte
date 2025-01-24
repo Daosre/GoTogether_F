@@ -27,7 +27,7 @@
 				handleError(res.status);
 				if (res.status === 201 && typeof window !== undefined) {
 					window.localStorage.setItem('token', res.response.connexion_token);
-					goto(`/${data}/accueil`);
+					goto(`/${data.lang}/accueil`);
 				}
 			});
 		} catch (err: any) {
