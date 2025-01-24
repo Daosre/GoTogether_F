@@ -19,6 +19,16 @@ export const en = {
 		notRegistered: 'Not yet registered ?',
 		redirectSignUp: 'Join us .',
 	},
+	welcome: {
+		title: 'Results found :',
+		category: 'Category',
+		location: 'Location',
+		date: 'Date',
+		time: 'Time',
+		participant: 'Participant',
+		price: 'Price',
+		moreInformation: 'More information',
+	},
 	nav: {
 		welcome: 'Welcome',
 		createEvent: 'Create an event',
