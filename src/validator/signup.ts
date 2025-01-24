@@ -26,8 +26,5 @@ export const schemaSignup = yup.object({
 		.test('', "Le mot de passe n'est pas identique", function (value) {
 			return this.parent.password === value;
 		}),
-	checkbox: yup
-		.boolean()
-		.oneOf([false], 'You must accept the terms and conditions')
-		.required('This field is required'),
+	checkbox: yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
 });

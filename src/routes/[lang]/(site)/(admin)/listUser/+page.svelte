@@ -48,13 +48,14 @@
 			}
 		});
 	}
+	let { data } = $props();
 </script>
 
 <main class="flex grow flex-col gap-5 px-5 py-10 md:px-20">
 	<div
 		class="flex flex-col items-center gap-4 p-4 md:flex-row md:justify-center md:gap-6 lg:gap-20"
 	>
-		<Search bind:search />
+		<Search data={data.lang} bind:search />
 	</div>
 	<section class="overflow-auto">
 		<Table class="borderTable text-center ">

@@ -1,3 +1,5 @@
+import type { langType } from './translations/language';
+
 export type signupDataType = {
 	firstName: string;
 	lastName: string;
@@ -64,4 +66,19 @@ export type tokenType = {
 	iat: number;
 	role: string;
 	sub: string;
+};
+export type eventPropsType = {
+	lang: langType;
+	data: eventType;
+	translation: {
+		welcome: {
+			location: string;
+			category: string;
+			date: string;
+			time: string;
+			participant: string;
+			price: string;
+			moreInformation: string;
+		};
+	};
 };

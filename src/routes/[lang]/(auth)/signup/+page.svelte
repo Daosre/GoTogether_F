@@ -121,6 +121,7 @@
 					class="checkbox"
 					bind:checked={formData.checkbox}
 					onclick={async () => {
+						formData.checkbox = !formData.checkbox;
 						errors = await validValueForm(formData, 'checkbox', errors, schemaSignup);
 					}}
 				/>

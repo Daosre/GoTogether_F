@@ -34,7 +34,6 @@
 		const delay = setTimeout(() => {
 			requestGet(`evenement/search?page=${page}&search=${search}&location=${location}`).then(
 				(res) => {
-					console.log(res);
 					handleError(res.status);
 					if (res.status === 200) {
 						response = res.response;
@@ -66,7 +65,7 @@
 	<div
 		class="flex flex-col items-center gap-4 p-4 md:flex-row md:justify-center md:gap-6 lg:gap-20"
 	>
-		<SearchBar bind:location bind:search />
+		<SearchBar {data} bind:location bind:search />
 	</div>
 	<section class="overflow-auto">
 		<Table class="borderTable text-center ">

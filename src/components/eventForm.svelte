@@ -27,7 +27,6 @@
 			errors = {};
 			formData.time = formData.time + ':00Z';
 			requestPost('evenement/create', formData).then((res) => {
-				console.log(res);
 				if (res.status === 401) {
 					disconnect();
 				}

@@ -7,11 +7,10 @@
 
 	let { data } = $props();
 	function handleClick(langue: keyof typeof language) {
-		console.log(langue);
 		if (page.params.lang) {
 			const newUrl = data.url.replace(page.params.lang, langue);
 			goto(newUrl);
-		} 
+		}
 	}
 </script>
 
