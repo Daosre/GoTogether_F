@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { formatHM } from '../utils/const';
-	import { language, type langType } from '../utils/translations/language';
 	import type { eventPropsType, eventType } from '../utils/type';
 	import ButtonInformation from './button/buttonInformation.svelte';
 	let { lang, data, translation }: eventPropsType = $props();
@@ -18,5 +17,5 @@
 	</p>
 	<p>{translation.welcome.participant} : {data._count.userParticipate} / {data.maxParticipants}</p>
 	<p>{translation.welcome.price} : {data.price === 0 ? 'Gratuit' : data.price + '€ / pers'}</p>
-	<ButtonInformation text={translation.welcome.moreInformation} />
+	<ButtonInformation text={translation.welcome.moreInformation} redirect={`event/${data.id}`} />
 </div>
