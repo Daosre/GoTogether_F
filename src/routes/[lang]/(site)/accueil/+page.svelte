@@ -7,6 +7,7 @@
 	import { language, type langType } from '../../../../utils/translations/language';
 	import type { eventType, getEventListResponseType } from '../../../../utils/type';
 	import Carousel from '../../../../components/Carousel.svelte';
+	import EventCarousel from '../../../../components/eventCarousel.svelte';
 
 	let { data }: { data: { lang: langType } } = $props();
 	let search = $state('');
@@ -14,13 +15,21 @@
 	let page = $state(0);
 	let responseEventList: getEventListResponseType | undefined = $state();
 	let mostEventRecent: eventType[] = $state([]);
+	let mostEventPopular: eventType[] = $state([]);
 	$effect(() => {
 		search;
 		location;
 		page;
+		console.log(search, location);
 		if (!search && !location) {
+			responseEventList = undefined;
 			requestGet('evenement/mostRecent').then((res) => {
+				handleError(res.status);
 				mostEventRecent = res.response.data;
+			});
+			requestGet('evenement/mostPopular').then((res) => {
+				handleError(res.status);
+				mostEventPopular = res.response.data;
 			});
 		} else {
 			const delay = setTimeout(() => {
@@ -47,10 +56,30 @@
 <main class="grow text-center">
 	<SearchBar bind:search bind:location {data} />
 	{#if mostEventRecent && !responseEventList}
-		<Carousel data={mostEventRecent} lang={data} {translation} />
+		<section>
+			<h2 class="Damion mb-2.5 text-2xl xl:text-[40px]">{translation.welcome.titleRecentEvent}</h2>
+			<Carousel data={mostEventRecent} id={1}>
+				{#each mostEventRecent as element, index}
+					<div class="flex-[0_0_100%] md:flex-[0_0_50%]">
+						<EventCarousel data={element} lang={data.lang} {translation} {index} />
+					</div>
+				{/each}
+			</Carousel>
+		</section>
+		<section>
+			<h2 class="Damion mb-2.5 text-2xl xl:text-[40px]">{translation.welcome.titlePopularEvent}</h2>
+			<Carousel data={mostEventPopular} id={2}>
+				{#each mostEventPopular as element, index}
+					<div class="flex-[0_0_100%] md:flex-[0_0_50%]">
+						<EventCarousel data={element} lang={data.lang} {translation} {index} />
+					</div>
+				{/each}
+			</Carousel>
+		</section>
 	{:else if responseEventList}
 		<h1 class="Damion mb-2.5 text-2xl lg:mb-[30px] lg:text-5xl">
-			Resultats trouvé : {responseEventList.countEvent}
+			{translation.welcome.titleSearchEvent}
+			{responseEventList.countEvent}
 		</h1>
 		<section
 			class="flex flex-col items-center md:grid md:grid-cols-2 md:justify-items-center lg:grid-cols-3 lg:gap-[30px] lg:px-40"
