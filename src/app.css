@@ -215,3 +215,28 @@ nav li a:hover:after {
 		width: 300%;
 	}
 }
+.hiddenScrollBar {
+	overflow: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.hiddenScrollBar::-webkit-scrollbar {
+	display: none;
+}
+/* @keyframes carousel {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+.carousel {
+	display: inline-block;
+	animation-play-state: paused;
+	animation: 15s carousel infinite linear;
+}
+ul:hover .carousel {
+	animation-play-state: paused;
+} */
