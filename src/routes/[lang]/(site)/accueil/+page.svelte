@@ -1,14 +1,15 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
+	import Carousel from '../../../../components/Carousel.svelte';
 	import Event from '../../../../components/event.svelte';
+	import EventCarousel from '../../../../components/eventCarousel.svelte';
 	import Pagination from '../../../../components/pagination.svelte';
 	import SearchBar from '../../../../components/searchBar/searchBar.svelte';
 	import { requestGet } from '../../../../services/requestGet';
 	import { handleError } from '../../../../utils/handleError';
 	import { language, type langType } from '../../../../utils/translations/language';
 	import type { eventType, getEventListResponseType } from '../../../../utils/type';
-	import Carousel from '../../../../components/Carousel.svelte';
-	import EventCarousel from '../../../../components/eventCarousel.svelte';
-
+	let isDark: { get: () => boolean } = getContext('isDark');
 	let { data }: { data: { lang: langType } } = $props();
 	let search = $state('');
 	let location = $state('');
@@ -53,11 +54,15 @@
 	});
 </script>
 
-<main class="grow text-center">
+<main class="grow text-center {isDark.get() ? 'darkmode' : 'lightmode'}">
 	<SearchBar bind:search bind:location {data} />
 	{#if mostEventRecent && !responseEventList}
 		<section>
-			<h2 class="Damion mb-2.5 text-2xl xl:text-[40px]">{translation.welcome.titleRecentEvent}</h2>
+			<h2
+				class="Damion {isDark.get() ? 'text-white' : 'text-black'}  mb-2.5 text-2xl xl:text-[40px]"
+			>
+				{translation.welcome.titleRecentEvent}
+			</h2>
 			<Carousel data={mostEventRecent} id={1}>
 				{#each mostEventRecent as element, index}
 					<div class="flex-[0_0_100%] md:flex-[0_0_50%]">
@@ -67,7 +72,11 @@
 			</Carousel>
 		</section>
 		<section>
-			<h2 class="Damion mb-2.5 text-2xl xl:text-[40px]">{translation.welcome.titlePopularEvent}</h2>
+			<h2
+				class="Damion {isDark.get() ? 'text-white' : 'text-black'} mb-2.5 text-2xl xl:text-[40px]"
+			>
+				{translation.welcome.titlePopularEvent}
+			</h2>
 			<Carousel data={mostEventPopular} id={2}>
 				{#each mostEventPopular as element, index}
 					<div class="flex-[0_0_100%] md:flex-[0_0_50%]">
