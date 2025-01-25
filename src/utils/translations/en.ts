@@ -20,7 +20,9 @@ export const en = {
 		redirectSignUp: 'Join us .',
 	},
 	welcome: {
-		title: 'Results found :',
+		titleSearchEvent: 'Results found :',
+		titlePopularEvent: 'Most popular events',
+		titleRecentEvent: 'Most recent events',
 		category: 'Category',
 		location: 'Location',
 		date: 'Date',

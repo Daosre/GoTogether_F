@@ -2,30 +2,15 @@
 	import { onDestroy, onMount } from 'svelte';
 	import type { langType } from '../utils/translations/language';
 	import type { eventType } from '../utils/type';
-	import EventCarousel from './eventCarousel.svelte';
 
 	let {
 		data,
-		lang,
-		translation,
 		id = 0,
+		children,
 	}: {
 		data: eventType[];
-		lang: {
-			lang: langType;
-		};
-		translation: {
-			welcome: {
-				location: string;
-				category: string;
-				date: string;
-				time: string;
-				participant: string;
-				price: string;
-				moreInformation: string;
-			};
-		};
-		id: number;
+		id?: number;
+		children: any;
 	} = $props();
 	let currentIndex = $state(0);
 	let interval: any;
@@ -55,6 +40,9 @@
 		}
 	}
 	onMount(() => {
+		window.addEventListener('resize', () => {
+			checkSizeDom();
+		});
 		const carousel = document.querySelector(`#carousel${id}`);
 		if (carousel) {
 			carousel.addEventListener('mouseover', () => (hover = true));
@@ -71,13 +59,9 @@
 </script>
 
 <div id={`carousel${id}`}>
-	<div class="relative h-64 overflow-hidden">
+	<div class="relative overflow-hidden">
 		<div class="carousel flex" style="--widthTransition: {widthTransition}%">
-			{#each data as element, index}
-				<div class="flex-[0_0_100%] md:flex-[0_0_50%]">
-					<EventCarousel data={element} lang={lang.lang} {translation} {index} />
-				</div>
-			{/each}
+			{@render children()}
 		</div>
 	</div>
 	<div class="mb-5 mt-2.5 flex justify-center gap-5">
@@ -96,7 +80,7 @@
 					href={`#${index}`}
 					onclick={() => ((widthTransition = index * -100), (currentIndex = index))}
 					aria-label="paginationCarousel"
-					class="hidden h-6 w-6 rounded-3xl md:block {currentIndex === index
+					class=" hidden h-6 w-6 rounded-3xl md:block {currentIndex === index
 						? 'bg-orange'
 						: 'bg-[#d9d9d9]'} duration-[1.5s]"
 				></a>
