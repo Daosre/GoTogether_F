@@ -41,6 +41,16 @@ export const en = {
 		signUp: 'Sign up',
 		logIn: 'Log in',
 	},
+	event: {
+		description: 'Description',
+		city: 'City',
+		address: 'Address',
+		date: 'Date',
+		participants: 'Participants',
+		price: 'Price',
+		subscribe: 'Subscribe',
+		unsubscribe: 'Unsubscribe',
+	},
 	search: 'Reseach',
 	footer: { condition: 'General condition', notice: 'Legal Notices' },
 };
