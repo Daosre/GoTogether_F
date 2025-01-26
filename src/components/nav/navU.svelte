@@ -16,6 +16,6 @@
 >
 	<li><a href="/{data}/accueil"> {translation.nav.welcome}</a></li>
 	<li><a href="/{data}/createEvent"> {translation.nav.createEvent}</a></li>
-	<li><a href="/{data}/"> {translation.nav.myEvents}</a></li>
-	<li><a href="/{data}/"> {translation.nav.myParticipations}</a></li>
+	<li><a href="/{data}/myEvents"> {translation.nav.myEvents}</a></li>
+	<li><a href="/{data}/myParticipations"> {translation.nav.myParticipations}</a></li>
 </nav>
