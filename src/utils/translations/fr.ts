@@ -42,6 +42,16 @@ export const fr = {
 		free: '',
 		moreInformation: "Plus d'information",
 	},
+	event: {
+		description: 'Description',
+		city: 'Ville',
+		address: 'Adresse',
+		date: 'Date',
+		participants: 'Participants',
+		price: 'Prix',
+		subscribe: 'Participer',
+		unsubscribe: 'Se désinscrire',
+	},
 	search: 'Recherche',
 	footer: { condition: 'Conditions Générales', notice: 'Mentions Légales' },
 };

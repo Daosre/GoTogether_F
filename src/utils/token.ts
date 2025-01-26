@@ -7,7 +7,7 @@ export function readToken() {
 		try {
 			return JSON.parse(atob(arrayToken[1]));
 		} catch (err) {
-			return null;
+			return undefined;
 		}
 	}
 }

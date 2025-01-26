@@ -25,5 +25,5 @@
 	<p class="my-[5px]">
 		{translation.welcome.price} : {data.price === 0 ? 'Gratuit' : data.price + '€ / pers'}
 	</p>
-	<ButtonInformation text={translation.welcome.moreInformation} />
+	<ButtonInformation text={translation.welcome.moreInformation} redirect={`event/${data.id}`} />
 </div>

@@ -16,7 +16,7 @@
 	import Translate from './translate.svelte';
 	import ModalV from '../modal/modalV.svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
-	let token: tokenType | null = readToken();
+	let token: tokenType | undefined = readToken();
 	let { data, isVisible = true } = $props();
 	let isOpen = $state(false);
 </script>
