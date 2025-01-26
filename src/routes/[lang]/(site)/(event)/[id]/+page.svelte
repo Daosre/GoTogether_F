@@ -1,15 +1,14 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
 	import { requestGet } from '../../../../../services/requestGet';
 	import { handleError } from '../../../../../utils/handleError';
-	import { language } from '../../../../../utils/translations/language';
 	import type { eventType } from '../../../../../utils/type';
 	import { readToken } from '../../../../../utils/token';
 	import { requestPatch } from '../../../../../services/requestPatch';
 	import ButtonParticipate from '../../../../../components/button/buttonParticipate.svelte';
 	import { formatDate } from '../../../../../utils/const';
+	import { language, type langType } from '../../../../../utils/translations/language';
 
-	let { data } = $props();
+	let { data }: { data: { lang: langType; id: string } } = $props();
 	let translation = $state(language[data.lang]);
 	let token = readToken();
 	let isReloadNeeded = $state(false);

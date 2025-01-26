@@ -27,11 +27,11 @@
 			class="Agdasima flex h-full list-none flex-col items-center justify-center gap-4 text-[32px] text-[#212121]"
 		>
 			<li><a href="/{data}/accueil">{translation.nav.welcome}</a></li>
-			<li><a href="/{data}/signup">{translation.nav.createEvent}</a></li>
-			<li><a href="/{data}/signin">{translation.nav.myEvents}</a></li>
-			<li><a href="/{data}/signin">{translation.nav.myParticipations}</a></li>
-			<li><a href="/{data}/signin">{translation.nav.eventList}</a></li>
-			<li><a href="/{data}/signin">{translation.nav.userList}</a></li>
+			<li><a href="/{data}/createEvent">{translation.nav.createEvent}</a></li>
+			<li><a href="/{data}/myEvents">{translation.nav.myEvents}</a></li>
+			<li><a href="/{data}/myParticipations">{translation.nav.myParticipations}</a></li>
+			<li><a href="/{data}/listEvent">{translation.nav.eventList}</a></li>
+			<li><a href="/{data}/listUser">{translation.nav.userList}</a></li>
 			<li><a href="/{data}/accueil">{translation.nav.welcome}</a></li>
 		</nav>
 	</div>
