@@ -82,3 +82,13 @@ export type eventPropsType = {
 		};
 	};
 };
+export type eventFormType = {
+	name: string;
+	categoryName: string;
+	city: string;
+	address: string;
+	time: string;
+	maxParticipants: number | null;
+	price: number;
+	description: string;
+};
