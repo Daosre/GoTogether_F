@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import type { langType } from '../utils/translations/language';
-	import type { eventType } from '../utils/type';
-
+	import type { eventType } from '../../utils/type';
 	let {
 		data,
 		id = 0,

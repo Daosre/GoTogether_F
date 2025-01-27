@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import Carousel from '../../../../components/Carousel.svelte';
-	import Event from '../../../../components/event.svelte';
-	import EventCarousel from '../../../../components/eventCarousel.svelte';
 	import Pagination from '../../../../components/pagination.svelte';
 	import SearchBar from '../../../../components/searchBar/searchBar.svelte';
 	import { requestGet } from '../../../../services/requestGet';
 	import { handleError } from '../../../../utils/handleError';
 	import { language, type langType } from '../../../../utils/translations/language';
 	import type { eventType, getEventListResponseType } from '../../../../utils/type';
+	import Carousel from '../../../../components/evenement/Carousel.svelte';
+	import EventCarousel from '../../../../components/evenement/eventCarousel.svelte';
+	import Event from '../../../../components/evenement/event.svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
 	let { data }: { data: { lang: langType } } = $props();
 	let search = $state('');

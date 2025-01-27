@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { formatHM } from '../utils/const';
-	import type { eventPropsType } from '../utils/type';
-	import ButtonInformation from './button/buttonInformation.svelte';
+	import { formatHM } from '../../utils/const';
+	import type { eventPropsType } from '../../utils/type';
+	import ButtonInformation from '../button/buttonInformation.svelte';
+
 	let { lang, data, translation, index }: eventPropsType & { index: number } = $props();
 </script>
 
-<!-- Agdasima eventshadow m-2 flex flex-col items-center gap-2.5 rounded-[10px] bg-white px-5 pb-5 pt-2.5 lg:w-[320px] lg:justify-center lg:text-[20px] -->
 <div
 	id={`${index}`}
 	class="Agdasima eventshadow m-2 inline-block shrink-0 snap-center rounded-[10px] bg-white px-5 pb-5 pt-2.5"

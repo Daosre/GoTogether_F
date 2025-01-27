@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { requestPost } from '../services/requestPost';
-	import { extractErrors } from '../utils/extractErrorsForm';
-	import { disconnect } from '../utils/token';
-	import { language, type langType } from '../utils/translations/language';
-	import type { eventErrorType, eventFormType, eventType } from '../utils/type';
-	import { validValueForm } from '../utils/validValueForm';
-	import { schemaEvent } from '../validator/event';
-	import InputForm from './input/InputForm.svelte';
-	import InputSubmit from './input/InputSubmit.svelte';
+	import { requestPost } from '../../services/requestPost';
+	import { extractErrors } from '../../utils/extractErrorsForm';
+	import { disconnect } from '../../utils/token';
+	import { language, type langType } from '../../utils/translations/language';
+	import type { eventErrorType, eventFormType } from '../../utils/type';
+	import { validValueForm } from '../../utils/validValueForm';
+	import { schemaEvent } from '../../validator/event';
+	import InputForm from '../input/InputForm.svelte';
+	import InputSubmit from '../input/InputSubmit.svelte';
+
 	let {
 		formData = {
 			name: '',
