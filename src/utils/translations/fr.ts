@@ -54,4 +54,7 @@ export const fr = {
 	},
 	search: 'Recherche',
 	footer: { condition: 'Conditions Générales', notice: 'Mentions Légales' },
+
+	yes: 'Oui',
+	no: 'Non'
 };
