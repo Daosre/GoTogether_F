@@ -53,4 +53,7 @@ export const en = {
 	},
 	search: 'Reseach',
 	footer: { condition: 'General condition', notice: 'Legal Notices' },
+
+	yes: 'Yes',
+	no: 'No',
 };

@@ -8,6 +8,7 @@
 		TableHeadCell,
 	} from 'flowbite-svelte';
 	import { PenLine, Trash2Icon } from 'lucide-svelte';
+	import ModalValidate from '../../../../../components/modal/modalValidate.svelte';
 	import Pagination from '../../../../../components/pagination.svelte';
 	import SearchBar from '../../../../../components/searchBar/searchBar.svelte';
 	import { requestDelete } from '../../../../../services/requestDelete';
@@ -16,8 +17,11 @@
 	import { handleError } from '../../../../../utils/handleError';
 	import { language } from '../../../../../utils/translations/language';
 	import type { eventType } from '../../../../../utils/type';
+	import ModalUpdate from '../../../../../components/modal/modalUpdate.svelte';
 
 	let page = $state(0);
+	let isOpen = $state(false);
+	let isOpenU = $state(false);
 	let search = $state('');
 	let location = $state('');
 	let response: { data?: eventType[]; isNextPage?: boolean } = $state({});
@@ -94,12 +98,15 @@
 							<TableBodyCell>{data.price === 0 ? 'gratuit' : data.price}</TableBodyCell>
 							<TableBodyCell>{data._count.userParticipate}</TableBodyCell>
 							<TableBodyCell
-								><PenLine class=" m-auto cursor-pointer !border-none !p-0" /></TableBodyCell
+								><PenLine
+									class=" m-auto cursor-pointer !border-none !p-0"
+									onclick={() => (isOpenU = true)}
+								/></TableBodyCell
 							>
 							<TableBodyCell
 								><Trash2Icon
 									class="m-auto cursor-pointer !border-none !p-0 text-redError"
-									onclick={() => handleDelete(`${data.id}`)}
+									onclick={() => (isOpen = true)}
 								/></TableBodyCell
 							>
 						</TableBodyRow>
@@ -107,6 +114,8 @@
 				{/if}
 			</TableBody>
 		</Table>
+		<ModalUpdate bind:isOpenU/>
+		<ModalValidate bind:isOpen data={data.lang} />
 		<Pagination isNextPage={response.isNextPage} bind:page />
 	</section>
 </main>

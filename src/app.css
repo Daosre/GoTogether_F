@@ -196,23 +196,19 @@ nav li a:hover:after {
 @keyframes slidein {
 	from {
 		top: -100%;
-		width: 300%;
 	}
 
 	to {
 		bottom: 0%;
-		width: 100%;
 	}
 }
 @keyframes slideOut {
 	from {
 		bottom: 0%;
-		width: 100%;
 	}
 
 	to {
 		top: -100%;
-		width: 300%;
 	}
 }
 .hiddenScrollBar {
