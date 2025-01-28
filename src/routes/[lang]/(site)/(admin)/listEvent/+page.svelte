@@ -17,7 +17,7 @@
 	import { handleError } from '../../../../../utils/handleError';
 	import { language } from '../../../../../utils/translations/language';
 	import type { eventFormType, eventType } from '../../../../../utils/type';
-	import ModalUpdate from '../../../../../components/modal/modalUpdate.svelte';
+	import ModalUpdate from '../../../../../components/modal/modalUpdateEvent.svelte';
 
 	let page = $state(0);
 	let search = $state('');

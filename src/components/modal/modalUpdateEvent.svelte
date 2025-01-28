@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { CircleX, PenLine } from 'lucide-svelte';
 	import { extractErrors } from '../../utils/extractErrorsForm';
-	import { disconnect } from '../../utils/token';
 	import type { eventErrorType } from '../../utils/type';
 	import { validValueForm } from '../../utils/validValueForm';
 	import { schemaEvent } from '../../validator/event';

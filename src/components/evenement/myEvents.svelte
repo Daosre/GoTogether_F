@@ -2,7 +2,7 @@
 	import { Trash2Icon } from 'lucide-svelte';
 	import { formatDate } from '../../utils/const';
 	import type { eventPropsType } from '../../utils/type';
-	import ModalUpdate from '../modal/modalUpdate.svelte';
+	import ModalUpdate from '../modal/modalUpdateEvent.svelte';
 	import ModalValidate from '../modal/modalValidate.svelte';
 	import { requestDelete } from '../../services/requestDelete';
 	import { handleError } from '../../utils/handleError';

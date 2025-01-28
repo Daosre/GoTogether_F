@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { PenLine, Trash2Icon } from 'lucide-svelte';
 	import {
 		TableBody,
 		TableBodyCell,
@@ -14,6 +13,9 @@
 	import { requestDelete } from '../../../../../services/requestDelete';
 	import Search from '../../../../../components/searchBar/search.svelte';
 	import Pagination from '../../../../../components/pagination.svelte';
+	import ModalValidate from '../../../../../components/modal/modalValidate.svelte';
+	import { language } from '../../../../../utils/translations/language';
+	import ModalUpdateUser from '../../../../../components/modal/modalUpdateUser.svelte';
 
 	let page = $state(0);
 	let search = $state('');
@@ -26,6 +28,7 @@
 	$effect(() => {
 		page;
 		search;
+		isReloadNeeded;
 		isReloadNeeded = false;
 		const delay = setTimeout(() => {
 			requestGet(`user/List?page=${page}&search=${search}`).then((res) => {
@@ -49,6 +52,10 @@
 		});
 	}
 	let { data } = $props();
+	let translation = $state(language[data.lang]);
+	$effect(() => {
+		translation = language[data.lang];
+	});
 </script>
 
 <main class="flex grow flex-col gap-5 px-5 py-10 md:px-20">
@@ -75,16 +82,22 @@
 							<TableBodyCell>{data.firstName}</TableBodyCell>
 							<TableBodyCell>{data.userName}</TableBodyCell>
 							<TableBodyCell>{data.email}</TableBodyCell>
-							<TableBodyCell>{data.phone}</TableBodyCell>
+							<TableBodyCell class="!whitespace-nowrap">{data.phone}</TableBodyCell>
 							<TableBodyCell>{data.isActive}</TableBodyCell>
 							<TableBodyCell
-								><PenLine class=" m-auto cursor-pointer !border-none !p-0" /></TableBodyCell
-							>
-							<TableBodyCell
-								><Trash2Icon
-									class="m-auto cursor-pointer !border-none !p-0 text-redError"
-									onclick={() => handleDelete(`${data.id}`)}
+								class="notBorder"
+								onclick={() => {
+									console.log(data);
+								}}
+								><ModalUpdateUser
+									{translation}
+									formData={data}
+									bind:isReloadNeeded
+									id={data.id}
 								/></TableBodyCell
+							>
+							<TableBodyCell class="notBorder"
+								><ModalValidate {translation} action={() => handleDelete(data.id)} /></TableBodyCell
 							>
 						</TableBodyRow>
 					{/each}
