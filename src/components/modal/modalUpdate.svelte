@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { CircleX } from 'lucide-svelte';
-	import { requestPost } from '../../services/requestPost';
+	import { CircleX, PenLine } from 'lucide-svelte';
 	import { extractErrors } from '../../utils/extractErrorsForm';
 	import { disconnect } from '../../utils/token';
 	import type { eventErrorType } from '../../utils/type';
@@ -9,8 +8,10 @@
 	import { schemaEvent } from '../../validator/event';
 	import InputForm from '../input/InputForm.svelte';
 	import InputSubmit from '../input/InputSubmit.svelte';
+	import { requestPatch } from '../../services/requestPatch';
+	import { handleError } from '../../utils/handleError';
 	let {
-		formData = {
+		formData = $bindable({
 			name: '',
 			categoryName: '',
 			city: '',
@@ -19,22 +20,23 @@
 			maxParticipants: null,
 			price: 0,
 			description: '',
-		},
-		isOpenU = $bindable(),
+		}),
+		isReloadNeeded = $bindable(),
+		id,
 	} = $props();
+	let isOpen = $state(false);
 	let errors: eventErrorType = $state({});
 	async function submitHandler() {
 		try {
 			await schemaEvent.validate(formData, { abortEarly: false });
 			errors = {};
 			formData.time = formData.time + ':00Z';
-			requestPost('evenement/create', formData).then((res) => {
-				console.log(res);
-				if (res.status === 401) {
-					disconnect();
-				}
-				if (res.status === 201) {
-					goto('/accueil');
+			requestPatch(`evenement/update/${id}`, formData).then((res) => {
+				console.log(res, 'res', formData, 'data');
+				handleError(res.status);
+				if (res.status === 200) {
+					isReloadNeeded = true;
+					isOpen = false;
 				}
 			});
 		} catch (err: any) {
@@ -44,11 +46,13 @@
 	let modalOut = $state(false);
 </script>
 
-{#if isOpenU}
+<PenLine class=" m-auto cursor-pointer !border-none" onclick={() => (isOpen = true)} />
+<div class={isOpen ? 'disableScroll' : ''}></div>
+{#if isOpen}
 	<div
 		class="slideIn {modalOut
 			? ''
-			: ''} fixed left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center overflow-scroll border-2 border-[#212121] bg-[#FFF4E9] md:w-full"
+			: ''} fixed left-0 top-0 z-20 flex h-full w-full flex-col items-center justify-center overflow-auto border-2 border-[#212121] bg-[#FFF4E9] md:w-full"
 	>
 		<div class="relative h-full w-full py-7 xl:flex xl:flex-col xl:items-center">
 			<h1 class="text-center font-['Damion'] text-[40px]">Création d'évènement</h1>
@@ -56,12 +60,12 @@
 				class="absolute right-2 top-2"
 				size="30px"
 				onclick={() => {
-					isOpenU = !isOpenU;
+					isOpen = !isOpen;
 				}}
 			/>
 			<form
 				onsubmit={submitHandler}
-				class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white px-5 py-5 xl:w-2/3 xl:flex-row xl:flex-wrap xl:items-center xl:justify-center"
+				class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white !px-5 !py-5 xl:w-2/3 xl:flex-row xl:flex-wrap xl:items-center xl:justify-center"
 			>
 				<InputForm
 					label="Titre"
@@ -131,7 +135,7 @@
 						<hr class="relative top-1 w-full border-black" />
 					</div>
 					<textarea
-						class="Agdasima flex h-12 min-h-12 justify-center rounded-xl text-center text-xl shadow-[inset_2px_-2px_2px_0_rgba(33,33,33,0.5),inset_-2px_2px_2px_0_rgba(33,33,33,0.5)] outline-none placeholder:text-black placeholder:opacity-20"
+						class="Agdasima flex h-12 min-h-12 justify-center rounded-xl !p-2.5 text-center text-xl shadow-[inset_2px_-2px_2px_0_rgba(33,33,33,0.5),inset_-2px_2px_2px_0_rgba(33,33,33,0.5)] outline-none placeholder:text-black placeholder:opacity-20"
 						name="descritpion"
 						id="description"
 						oninput={async (e) => {

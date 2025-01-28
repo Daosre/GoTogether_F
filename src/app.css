@@ -164,7 +164,10 @@
 	border: 1px solid #212121;
 	padding: 5px 20px;
 }
-
+.notBorder * {
+	border: 0px solid #212121;
+	padding: 0;
+}
 nav li {
 	position: relative;
 }
@@ -220,19 +223,6 @@ nav li a:hover:after {
 .hiddenScrollBar::-webkit-scrollbar {
 	display: none;
 }
-/* @keyframes carousel {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		transform: translateX(-100%);
-	}
+body:has(.disableScroll) {
+	overflow: hidden;
 }
-.carousel {
-	display: inline-block;
-	animation-play-state: paused;
-	animation: 15s carousel infinite linear;
-}
-ul:hover .carousel {
-	animation-play-state: paused;
-} */
