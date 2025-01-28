@@ -7,6 +7,7 @@
 	import ButtonParticipate from '../../../../../../components/button/buttonParticipate.svelte';
 	import { formatDate } from '../../../../../../utils/const';
 	import { language, type langType } from '../../../../../../utils/translations/language';
+	import ModalListParticipant from '../../../../../../components/modal/modalListParticipant.svelte';
 
 	let { data }: { data: { lang: langType; id: string } } = $props();
 	let translation = $state(language[data.lang]);
@@ -17,6 +18,7 @@
 	});
 	let eventData: eventType | undefined = $state();
 	let isParticipate: boolean = $state(false);
+	let isCreator: boolean = $state(false);
 	$effect(() => {
 		isReloadNeeded;
 		isReloadNeeded = false;
@@ -25,6 +27,7 @@
 			handleError(res.status);
 			eventData = res.response.data;
 			isParticipate = res.response.isParticipate;
+			isCreator = res.response.isCreator;
 		});
 	});
 	function participate() {
@@ -77,9 +80,14 @@
 				</section>
 			</div>
 		</article>
-		<ButtonParticipate
-			click={participate}
-			text={isParticipate ? translation.event.unsubscribe : translation.event.subscribe}
-		/>
+		<div class="flex flex-col gap-2.5 md:flex-row md:gap-10">
+			{#if isCreator}
+				<ModalListParticipant data={eventData} {translation} bind:isReloadNeeded />
+			{/if}
+			<ButtonParticipate
+				click={participate}
+				text={isParticipate ? translation.event.unsubscribe : translation.event.subscribe}
+			/>
+		</div>
 	{/if}
 </main>
