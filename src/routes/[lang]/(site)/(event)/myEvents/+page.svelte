@@ -10,12 +10,15 @@
 	let { data } = $props();
 	let search = $state('');
 	let location = $state('');
+	let isReloadNeeded = $state(false);
 	let responseEventList: getEventListResponseType | undefined = $state();
 	let page = $state(0);
 	$effect(() => {
 		search;
 		location;
 		page;
+		isReloadNeeded;
+		isReloadNeeded = false;
 		const delay = setTimeout(() => {
 			requestGet(`evenement/searchMyEvent?search=${search}&location=${location}&page=${page}`).then(
 				(res) => {
@@ -48,7 +51,7 @@
 			class="flex flex-col items-center gap-5 md:grid md:grid-cols-2 md:justify-items-center lg:grid-cols-3 lg:gap-[30px] lg:px-40"
 		>
 			{#each responseEventList.data as event}
-				<MyEvents data={event} lang={data.lang} {translation} />
+				<MyEvents bind:page bind:isReloadNeeded data={event} lang={data.lang} {translation} />
 			{/each}
 		</section>
 		<Pagination isNextPage={responseEventList.isNextPage} bind:page />

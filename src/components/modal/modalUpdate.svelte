@@ -32,7 +32,6 @@
 			errors = {};
 			formData.time = formData.time + ':00Z';
 			requestPatch(`evenement/update/${id}`, formData).then((res) => {
-				console.log(res, 'res', formData, 'data');
 				handleError(res.status);
 				if (res.status === 200) {
 					isReloadNeeded = true;
@@ -54,7 +53,7 @@
 			? ''
 			: ''} fixed left-0 top-0 z-20 flex h-full w-full flex-col items-center justify-center overflow-auto border-2 border-[#212121] bg-[#FFF4E9] md:w-full"
 	>
-		<div class="relative h-full w-full py-7 xl:flex xl:flex-col xl:items-center">
+		<div class="relative h-full w-full !py-7 xl:flex xl:flex-col xl:items-center">
 			<h1 class="text-center font-['Damion'] text-[40px]">Création d'évènement</h1>
 			<CircleX
 				class="absolute right-2 top-2"
@@ -148,7 +147,7 @@
 							>{errors['description']}</span
 						>{/if}
 				</div>
-				<InputSubmit text="Crée l'évènement" />
+				<InputSubmit text="Modifier l'évènement" />
 			</form>
 		</div>
 	</div>
