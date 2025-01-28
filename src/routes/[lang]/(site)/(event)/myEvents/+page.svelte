@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import MyEvents from '../../../../../components/evenement/myEvents.svelte';
 	import Pagination from '../../../../../components/pagination.svelte';
 	import SearchBar from '../../../../../components/searchBar/searchBar.svelte';
@@ -6,6 +7,7 @@
 	import { handleError } from '../../../../../utils/handleError';
 	import { language } from '../../../../../utils/translations/language';
 	import type { getEventListResponseType } from '../../../../../utils/type';
+	let isDark: { get: () => boolean } = getContext('isDark');
 
 	let { data } = $props();
 	let search = $state('');
@@ -40,10 +42,10 @@
 	});
 </script>
 
-<main class="grow text-center">
+<main class="grow text-center {isDark.get() ? 'darkmode' : 'lightmode'} ">
 	<SearchBar {data} bind:search bind:location />
 	{#if responseEventList}
-		<h1 class="Damion mb-2.5 text-2xl lg:mb-[30px] lg:text-5xl">
+		<h1 class="Damion mb-2.5 {isDark.get() ? 'text-white' : ''}  text-2xl lg:mb-[30px] lg:text-5xl">
 			{translation.welcome.titleSearchEvent}
 			{responseEventList?.countEvent}
 		</h1>

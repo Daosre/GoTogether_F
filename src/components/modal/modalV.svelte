@@ -8,6 +8,12 @@
 		translation = language[data];
 	});
 	let modalOut = $state(false);
+	function transitionOutModal() {
+		modalOut = true;
+		setTimeout(() => {
+			isOpen = !isOpen;
+		}, 3000);
+	}
 </script>
 
 <div class="slideIn {modalOut ? 'slideOut' : ''} fixed top-0 z-10 h-1/2 w-full">
@@ -24,9 +30,30 @@
 		<nav
 			class="Agdasima flex h-full list-none flex-col items-center justify-center gap-10 text-[32px] text-[#212121]"
 		>
-			<li><a href="/{data}/accueil">{translation.nav.welcome}</a></li>
-			<li><a href="/{data}/signup">{translation.nav.signUp}</a></li>
-			<li><a href="/{data}/signin">{translation.nav.logIn}</a></li>
+			<li>
+				<a
+					href="/{data}/accueil"
+					onclick={() => {
+						transitionOutModal();
+					}}>{translation.nav.welcome}</a
+				>
+			</li>
+			<li>
+				<a
+					href="/{data}/signup"
+					onclick={() => {
+						transitionOutModal();
+					}}>{translation.nav.signUp}</a
+				>
+			</li>
+			<li>
+				<a
+					href="/{data}/signin"
+					onclick={() => {
+						transitionOutModal();
+					}}>{translation.nav.logIn}</a
+				>
+			</li>
 		</nav>
 	</div>
 </div>
