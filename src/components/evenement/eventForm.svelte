@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { getContext } from 'svelte';
 	import { requestPost } from '../../services/requestPost';
 	import { extractErrors } from '../../utils/extractErrorsForm';
 	import { disconnect } from '../../utils/token';
@@ -9,6 +10,7 @@
 	import { schemaEvent } from '../../validator/event';
 	import InputForm from '../input/InputForm.svelte';
 	import InputSubmit from '../input/InputSubmit.svelte';
+	let isDark: { get: () => boolean } = getContext('isDark');
 
 	let {
 		formData = {
@@ -47,7 +49,7 @@
 	}
 </script>
 
-<h1 class="font-['Damion'] text-[40px]">Création d'évènement</h1>
+<h1 class="font-['Damion'] {isDark.get() ? 'text-white' : ''} text-[40px]">Création d'évènement</h1>
 <form
 	onsubmit={submitHandler}
 	class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white px-5 py-5 xl:w-1/4"

@@ -6,6 +6,8 @@
 	import ModalValidate from '../modal/modalValidate.svelte';
 	import { requestDelete } from '../../services/requestDelete';
 	import { handleError } from '../../utils/handleError';
+	import { getContext } from 'svelte';
+
 	let {
 		lang,
 		data,

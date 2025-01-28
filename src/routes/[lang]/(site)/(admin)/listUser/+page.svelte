@@ -16,6 +16,8 @@
 	import ModalValidate from '../../../../../components/modal/modalValidate.svelte';
 	import { language } from '../../../../../utils/translations/language';
 	import ModalUpdateUser from '../../../../../components/modal/modalUpdateUser.svelte';
+	import { getContext } from 'svelte';
+	let isDark: { get: () => boolean } = getContext('isDark');
 
 	let page = $state(0);
 	let search = $state('');
@@ -58,7 +60,7 @@
 	});
 </script>
 
-<main class="flex grow flex-col gap-5 px-5 py-10 md:px-20">
+<main class="flex grow flex-col gap-5 px-5 py-10 md:px-20 {isDark.get() ? 'darkmode' : 'lightmode'}">
 	<div
 		class="flex flex-col items-center gap-4 p-4 md:flex-row md:justify-center md:gap-6 lg:gap-20"
 	>
