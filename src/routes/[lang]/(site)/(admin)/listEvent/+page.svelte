@@ -16,12 +16,10 @@
 	import { formatDate } from '../../../../../utils/const';
 	import { handleError } from '../../../../../utils/handleError';
 	import { language } from '../../../../../utils/translations/language';
-	import type { eventType } from '../../../../../utils/type';
-	import ModalUpdate from '../../../../../components/modal/modalUpdate.svelte';
+	import type { eventFormType, eventType } from '../../../../../utils/type';
+	import ModalUpdate from '../../../../../components/modal/modalUpdateEvent.svelte';
 
 	let page = $state(0);
-	let isOpen = $state(false);
-	let isOpenU = $state(false);
 	let search = $state('');
 	let location = $state('');
 	let response: { data?: eventType[]; isNextPage?: boolean } = $state({});
@@ -34,6 +32,7 @@
 		page;
 		search;
 		location;
+		isReloadNeeded;
 		isReloadNeeded = false;
 		const delay = setTimeout(() => {
 			requestGet(`evenement/search?page=${page}&search=${search}&location=${location}`).then(
@@ -49,6 +48,11 @@
 			clearTimeout(delay);
 		};
 	});
+	let { data } = $props();
+	let translation = $state(language[data.lang]);
+	$effect(() => {
+		translation = language[data.lang];
+	});
 	function handleDelete(id: string) {
 		requestDelete(`evenement/delete/${id}`).then((res) => {
 			handleError(res.status);
@@ -58,11 +62,6 @@
 			}
 		});
 	}
-	let { data } = $props();
-	let translation = $state(language[data.lang]);
-	$effect(() => {
-		translation = language[data.lang];
-	});
 </script>
 
 <main class="flex grow flex-col gap-5 px-5 py-10 md:px-20">
@@ -97,25 +96,26 @@
 							<TableBodyCell>{data.city}</TableBodyCell>
 							<TableBodyCell>{data.price === 0 ? 'gratuit' : data.price}</TableBodyCell>
 							<TableBodyCell>{data._count.userParticipate}</TableBodyCell>
-							<TableBodyCell
-								><PenLine
-									class=" m-auto cursor-pointer !border-none !p-0"
-									onclick={() => (isOpenU = true)}
+							<TableBodyCell class="notBorder"
+								><ModalUpdate
+									formData={{
+										...data,
+										categoryName: data.category.name,
+										time: new Date(data.time).toISOString().slice(0, 16),
+									}}
+									bind:isReloadNeeded
+									id={data.id}
 								/></TableBodyCell
 							>
-							<TableBodyCell
-								><Trash2Icon
-									class="m-auto cursor-pointer !border-none !p-0 text-redError"
-									onclick={() => (isOpen = true)}
-								/></TableBodyCell
-							>
+							<TableBodyCell class="notBorder">
+								<ModalValidate {translation} action={() => handleDelete(data.id)} />
+							</TableBodyCell>
 						</TableBodyRow>
 					{/each}
 				{/if}
 			</TableBody>
 		</Table>
-		<ModalUpdate bind:isOpenU/>
-		<ModalValidate bind:isOpen data={data.lang} />
+
 		<Pagination isNextPage={response.isNextPage} bind:page />
 	</section>
 </main>
