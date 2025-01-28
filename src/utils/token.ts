@@ -12,9 +12,9 @@ export function readToken() {
 	}
 }
 
-export function disconnect() {
+export function disconnect(lang: string) {
 	if (typeof window !== 'undefined') {
 		window.localStorage.removeItem('token');
-		goto('/signin');
+		goto(`/${lang}/signin`);
 	}
 }

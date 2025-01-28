@@ -34,9 +34,11 @@
 	{:else}
 		<NavV data={data.lang} />
 	{/if}
+	{#if token}
+		<!-- <Avatar /> -->
+		<Deco lang={data.lang} />
+	{/if}
 
-	<Avatar />
-	<Deco />
 	<div class=" flex flex-col items-center gap-5 p-4">
 		<Darkmode />
 		{#if isVisible}
