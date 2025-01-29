@@ -8,6 +8,7 @@
 		type = 'text',
 		error,
 		schema,
+		list = '',
 	} = $props();
 </script>
 
@@ -23,6 +24,7 @@
 		{name}
 		{type}
 		id={label}
+		{list}
 		oninput={async (e) => {
 			error = await validValueForm(value, name, error, schema);
 		}}

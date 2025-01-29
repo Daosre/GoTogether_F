@@ -10,9 +10,11 @@
 	import InputForm from '../input/InputForm.svelte';
 	import InputSubmit from '../input/InputSubmit.svelte';
 	import { handleError } from '../../utils/handleError';
+	import { getCity } from '../../services/getCity';
+	import { requestGet } from '../../services/requestGet';
 	let isDark: { get: () => boolean } = getContext('isDark');
 	let {
-		formData = {
+		formData = $bindable({
 			name: '',
 			categoryName: '',
 			city: '',
@@ -21,10 +23,12 @@
 			maxParticipants: null,
 			price: 0,
 			description: '',
-		},
+		}),
 		data,
 	}: { data: { lang: langType; url: string }; formData?: eventFormType } = $props();
 	let translation = $state(language[data.lang]);
+	let citysFind: { nom: '' }[] = $state([]);
+	let categoryFind: { name: '' }[] = $state([]);
 	$effect(() => {
 		translation = language[data.lang];
 	});
@@ -44,6 +48,37 @@
 			errors = extractErrors(err);
 		}
 	}
+	$effect(() => {
+		formData.categoryName;
+		if (formData.categoryName) {
+			const delay = setTimeout(() => {
+				requestGet(`category/search?search=${formData.categoryName}`).then((res) => {
+					categoryFind = res.response;
+				});
+			}, 250);
+			return () => {
+				clearTimeout(delay);
+			};
+		} else {
+			citysFind = [];
+		}
+	});
+	$effect(() => {
+		formData.city;
+		if (formData.city) {
+			const delay = setTimeout(() => {
+				getCity(formData.city).then((res) => {
+					citysFind = res.response;
+					console.log(res.response);
+				});
+			}, 250);
+			return () => {
+				clearTimeout(delay);
+			};
+		} else {
+			categoryFind = [];
+		}
+	});
 </script>
 
 <h1 class="font-['Damion'] {isDark.get() ? 'text-white' : ''} text-[40px]">
@@ -69,7 +104,13 @@
 		error={errors}
 		name="categoryName"
 		schema={schemaEvent}
+		list="categoryPropal"
 	/>
+	<datalist id="categoryPropal">
+		{#each categoryFind as category}
+			<option value={category.name}>{category.name}</option>
+		{/each}
+	</datalist>
 	<InputForm
 		label={translation.event.city}
 		placeholder="{translation.event.city}..."
@@ -77,7 +118,13 @@
 		error={errors}
 		name="city"
 		schema={schemaEvent}
+		list="cityPropal"
 	/>
+	<datalist id="cityPropal">
+		{#each citysFind as city}
+			<option value={city.nom}>{city.nom}</option>
+		{/each}
+	</datalist>
 	<InputForm
 		label={translation.event.address}
 		placeholder="{translation.event.address}..."
@@ -113,6 +160,7 @@
 		name="price"
 		schema={schemaEvent}
 	/>
+
 	<div class="flex w-72 flex-col">
 		<div class="flex items-center gap-2 px-2">
 			<label class="GrandiFlora whitespace-nowrap text-xl" for="description"
