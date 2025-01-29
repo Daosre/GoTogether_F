@@ -2,14 +2,13 @@
 	import { CircleX, PenLine } from 'lucide-svelte';
 	import { extractErrors } from '../../utils/extractErrorsForm';
 	import type { eventErrorType } from '../../utils/type';
-	import { validValueForm } from '../../utils/validValueForm';
-	import { schemaEvent } from '../../validator/event';
 	import InputForm from '../input/InputForm.svelte';
 	import InputSubmit from '../input/InputSubmit.svelte';
 	import { requestPatch } from '../../services/requestPatch';
 	import { handleError } from '../../utils/handleError';
 	import { schemaSignup } from '../../validator/signup';
 	import { schemaSignupUpdate } from '../../validator/userUpdate';
+	import type { langType, language } from '../../utils/translations/language';
 	let {
 		formData = $bindable({
 			userName: '',
@@ -21,6 +20,11 @@
 		isReloadNeeded = $bindable(),
 		id,
 		translation,
+	}: {
+		formData: any;
+		isReloadNeeded: boolean;
+		id: string;
+		translation: (typeof language)['en'];
 	} = $props();
 	let isOpen = $state(false);
 	let errors: eventErrorType = $state({});
@@ -52,7 +56,7 @@
 			: ''} fixed left-0 top-0 z-20 flex h-full w-full flex-col items-center justify-center overflow-auto border-2 border-[#212121] bg-[#FFF4E9] md:w-full"
 	>
 		<div class="relative h-full w-full !py-7 xl:flex xl:flex-col xl:items-center">
-			<h1 class="text-center font-['Damion'] text-[40px]">Création d'évènement</h1>
+			<h1 class="text-center font-['Damion'] text-[40px]">{translation.user.titleModify}</h1>
 			<CircleX
 				class="absolute right-2 top-2"
 				size="30px"
@@ -109,7 +113,7 @@
 						schema={schemaSignup}
 					/>
 				</div>
-				<InputSubmit text="Modifier l'Utilisateur" />
+				<InputSubmit text={translation.user.modifyUser} />
 			</form>
 		</div>
 	</div>

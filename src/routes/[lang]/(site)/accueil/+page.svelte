@@ -85,8 +85,12 @@
 				{/each}
 			</Carousel>
 		</section>
-	{:else if responseEventList}
-		<h1 class="Damion mb-2.5 text-2xl lg:mb-[30px] lg:text-5xl">
+	{:else if responseEventList && responseEventList.data.length > 0}
+		<h1
+			class="Damion {isDark.get()
+				? 'text-white'
+				: 'text-black'} mb-2.5 text-2xl lg:mb-[30px] lg:text-5xl"
+		>
 			{translation.welcome.titleSearchEvent}
 			{responseEventList.countEvent}
 		</h1>
@@ -98,5 +102,13 @@
 			{/each}
 		</section>
 		<Pagination isNextPage={responseEventList.isNextPage} bind:page />
+	{:else}
+		<h1
+			class=" {isDark.get()
+				? 'text-white'
+				: 'text-black'} Damion mb-2.5 text-2xl lg:mb-[30px] lg:text-5xl"
+		>
+			{translation.notResult}
+		</h1>
 	{/if}
 </main>

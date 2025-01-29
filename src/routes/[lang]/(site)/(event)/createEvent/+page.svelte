@@ -4,7 +4,6 @@
 	let isDark: { get: () => boolean } = getContext('isDark');
 
 	let { data } = $props();
-	console.log(data);
 </script>
 
 <main

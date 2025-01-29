@@ -1,4 +1,5 @@
 export const fr = {
+	notResult: 'Aucun résultat trouvé',
 	signup: {
 		inscription: 'Inscription',
 		identifier: 'Identifiant',
@@ -43,6 +44,8 @@ export const fr = {
 		moreInformation: "Plus d'information",
 	},
 	event: {
+		title: 'Titre',
+		category: 'Catégorie',
 		description: 'Description',
 		city: 'Ville',
 		address: 'Adresse',
@@ -51,10 +54,28 @@ export const fr = {
 		price: 'Prix',
 		subscribe: 'Participer',
 		unsubscribe: 'Se désinscrire',
+		validForm: 'Créer un événement',
+		creator: 'Créateur',
+		eventName: "Nom de l'évènement",
+		createdAt: 'Date de création',
+		eventDate: "Date de l'évènement",
+		free: 'gratuit',
+		titleModify: "Modification de l'évènement",
+		modifyEvent: "Modifier l'évènement",
+	},
+	user: {
+		firstName: 'Prénom',
+		lastName: 'Nom',
+		userName: "Nom d'utilisateur",
+		email: 'Email',
+		phone: 'Téléphone',
+		activate: 'Activer',
+		titleModify: "Modification de l'utilisateur",
+		modifyUser: "Modifier l'Utilisateur",
 	},
 	search: 'Recherche',
 	footer: { condition: 'Conditions Générales', notice: 'Mentions Légales' },
 
 	yes: 'Oui',
-	no: 'Non'
+	no: 'Non',
 };

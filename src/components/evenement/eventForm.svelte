@@ -10,6 +10,7 @@
 	import { schemaEvent } from '../../validator/event';
 	import InputForm from '../input/InputForm.svelte';
 	import InputSubmit from '../input/InputSubmit.svelte';
+	import { handleError } from '../../utils/handleError';
 	let isDark: { get: () => boolean } = getContext('isDark');
 
 	let {
@@ -36,9 +37,7 @@
 			errors = {};
 			formData.time = formData.time + ':00Z';
 			requestPost('evenement/create', formData).then((res) => {
-				if (res.status === 401) {
-					disconnect();
-				}
+				handleError(res.status);
 				if (res.status === 201) {
 					goto('accueil');
 				}
@@ -55,8 +54,8 @@
 	class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white px-5 py-5 xl:w-1/4"
 >
 	<InputForm
-		label="Titre"
-		placeholder="Titre..."
+		label={translation.event.title}
+		placeholder="{translation.event.title}..."
 		bind:value={formData}
 		error={errors}
 		name="name"
@@ -64,24 +63,24 @@
 	/>
 
 	<InputForm
-		label="Catégorie"
-		placeholder="Catégorie..."
+		label={translation.event.category}
+		placeholder="{translation.event.category}..."
 		bind:value={formData}
 		error={errors}
 		name="categoryName"
 		schema={schemaEvent}
 	/>
 	<InputForm
-		label="Ville"
-		placeholder="Ville..."
+		label={translation.event.city}
+		placeholder="{translation.event.city}..."
 		bind:value={formData}
 		error={errors}
 		name="city"
 		schema={schemaEvent}
 	/>
 	<InputForm
-		label="Adresse"
-		placeholder="Adresse..."
+		label={translation.event.address}
+		placeholder="{translation.event.address}..."
 		bind:value={formData}
 		error={errors}
 		name="address"
@@ -89,7 +88,7 @@
 	/>
 
 	<InputForm
-		label="Date"
+		label={translation.event.date}
 		type="datetime-local"
 		bind:value={formData}
 		error={errors}
@@ -97,7 +96,7 @@
 		schema={schemaEvent}
 	/>
 	<InputForm
-		label="Participant"
+		label={translation.event.participants}
 		placeholder="20"
 		type="number"
 		bind:value={formData}
@@ -106,8 +105,8 @@
 		schema={schemaEvent}
 	/>
 	<InputForm
-		label="Prix"
-		placeholder="Prix"
+		label={translation.event.price}
+		placeholder={translation.event.price}
 		type="number"
 		bind:value={formData}
 		error={errors}
@@ -116,7 +115,9 @@
 	/>
 	<div class="flex w-72 flex-col">
 		<div class="flex items-center gap-2 px-2">
-			<label class="GrandiFlora whitespace-nowrap text-xl" for="description"> Description </label>
+			<label class="GrandiFlora whitespace-nowrap text-xl" for="description"
+				>{translation.event.description}</label
+			>
 			<hr class="relative top-1 w-full border-black" />
 		</div>
 		<textarea
@@ -127,10 +128,10 @@
 				errors = await validValueForm(formData, 'description', errors, schemaEvent);
 			}}
 			bind:value={formData.description}
-			placeholder="Description..."
+			placeholder="{translation.event.description}..."
 		></textarea>
 		{#if errors['description']}<span class="text-center text-redError">{errors['description']}</span
 			>{/if}
 	</div>
-	<InputSubmit text="Crée l'évènement" />
+	<InputSubmit text={translation.event.validForm} />
 </form>

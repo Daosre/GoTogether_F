@@ -60,7 +60,9 @@
 	});
 </script>
 
-<main class="flex grow flex-col gap-5 px-5 py-10 md:px-20 {isDark.get() ? 'darkmode' : 'lightmode'}">
+<main
+	class="flex grow flex-col gap-5 px-5 py-10 md:px-20 {isDark.get() ? 'darkmode' : 'lightmode'}"
+>
 	<div
 		class="flex flex-col items-center gap-4 p-4 md:flex-row md:justify-center md:gap-6 lg:gap-20"
 	>
@@ -69,12 +71,12 @@
 	<section class="overflow-auto">
 		<Table class="borderTable text-center ">
 			<TableHead class="bg-floralWhite ">
-				<TableHeadCell>Nom</TableHeadCell>
-				<TableHeadCell>Prénom</TableHeadCell>
-				<TableHeadCell>Nom d'utilisateur</TableHeadCell>
-				<TableHeadCell>Email</TableHeadCell>
-				<TableHeadCell>Téléphone</TableHeadCell>
-				<TableHeadCell>Activer</TableHeadCell>
+				<TableHeadCell>{translation.user.lastName}</TableHeadCell>
+				<TableHeadCell>{translation.user.firstName}</TableHeadCell>
+				<TableHeadCell>{translation.user.userName}</TableHeadCell>
+				<TableHeadCell>{translation.user.email}</TableHeadCell>
+				<TableHeadCell>{translation.user.phone}</TableHeadCell>
+				<TableHeadCell>{translation.user.activate}</TableHeadCell>
 			</TableHead>
 			<TableBody tableBodyClass="divide-y" class="text-white">
 				{#if response.data}
@@ -85,12 +87,8 @@
 							<TableBodyCell>{data.userName}</TableBodyCell>
 							<TableBodyCell>{data.email}</TableBodyCell>
 							<TableBodyCell class="!whitespace-nowrap">{data.phone}</TableBodyCell>
-							<TableBodyCell>{data.isActive}</TableBodyCell>
-							<TableBodyCell
-								class="notBorder"
-								onclick={() => {
-									console.log(data);
-								}}
+							<TableBodyCell>{data.isActive ? translation.yes : translation.no}</TableBodyCell>
+							<TableBodyCell class="notBorder"
 								><ModalUpdateUser
 									{translation}
 									formData={data}
