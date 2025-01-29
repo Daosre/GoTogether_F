@@ -1,20 +1,22 @@
 <script lang="ts">
-	import { Trash2Icon } from 'lucide-svelte';
 	import { formatDate } from '../../utils/const';
 	import type { eventPropsType } from '../../utils/type';
 	import ModalUpdate from '../modal/modalUpdateEvent.svelte';
 	import ModalValidate from '../modal/modalValidate.svelte';
 	import { requestDelete } from '../../services/requestDelete';
 	import { handleError } from '../../utils/handleError';
-	import { getContext } from 'svelte';
-
+	import type { language } from '../../utils/translations/language';
 	let {
 		lang,
 		data,
 		translation,
 		isReloadNeeded = $bindable(),
 		page = $bindable(),
-	}: eventPropsType & { isReloadNeeded: boolean; page: number } = $props();
+	}: eventPropsType & {
+		isReloadNeeded: boolean;
+		page: number;
+		translation: (typeof language)['en'];
+	} = $props();
 	function handleDelete(id: string) {
 		requestDelete(`evenement/delete/${id}`).then((res) => {
 			handleError(res.status);
@@ -48,6 +50,7 @@
 			}}
 			bind:isReloadNeeded
 			id={data.id}
+			{translation}
 		/>
 		<ModalValidate {translation} action={() => handleDelete(data.id)} />
 	</section>

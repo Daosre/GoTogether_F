@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { validValueForm } from '../../utils/validValueForm';
-
 	let {
 		label,
 		name,

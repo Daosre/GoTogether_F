@@ -3,7 +3,6 @@
 	import { getContext } from 'svelte';
 	import { requestPost } from '../../services/requestPost';
 	import { extractErrors } from '../../utils/extractErrorsForm';
-	import { disconnect } from '../../utils/token';
 	import { language, type langType } from '../../utils/translations/language';
 	import type { eventErrorType, eventFormType } from '../../utils/type';
 	import { validValueForm } from '../../utils/validValueForm';
@@ -12,7 +11,6 @@
 	import InputSubmit from '../input/InputSubmit.svelte';
 	import { handleError } from '../../utils/handleError';
 	let isDark: { get: () => boolean } = getContext('isDark');
-
 	let {
 		formData = {
 			name: '',
@@ -48,7 +46,9 @@
 	}
 </script>
 
-<h1 class="font-['Damion'] {isDark.get() ? 'text-white' : ''} text-[40px]">Création d'évènement</h1>
+<h1 class="font-['Damion'] {isDark.get() ? 'text-white' : ''} text-[40px]">
+	{translation.event.titleForm}
+</h1>
 <form
 	onsubmit={submitHandler}
 	class="mb-5 flex flex-col items-center gap-5 rounded border border-black bg-white px-5 py-5 xl:w-1/4"

@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-
 	import { listFlag, listLanguage } from '../../utils/const';
 	import type { language } from '../../utils/translations/language';
-
 	let { data } = $props();
 	function handleClick(langue: keyof typeof language) {
 		if (page.params.lang) {
