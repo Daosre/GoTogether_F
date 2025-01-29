@@ -49,7 +49,6 @@
 			bind:isReloadNeeded
 			id={data.id}
 		/>
-
 		<ModalValidate {translation} action={() => handleDelete(data.id)} />
 	</section>
 </div>

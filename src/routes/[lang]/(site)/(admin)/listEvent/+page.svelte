@@ -66,7 +66,9 @@
 	}
 </script>
 
-<main class="flex grow flex-col gap-5 px-5 py-10 md:px-20 {isDark.get() ? 'darkmode' : 'lightmode'}">
+<main
+	class="flex grow flex-col gap-5 px-5 py-10 md:px-20 {isDark.get() ? 'darkmode' : 'lightmode'}"
+>
 	<div
 		class="flex flex-col items-center gap-4 p-4 md:flex-row md:justify-center md:gap-6 lg:gap-20"
 	>
@@ -75,13 +77,13 @@
 	<section class="overflow-auto">
 		<Table class="borderTable text-center ">
 			<TableHead class="bg-floralWhite ">
-				<TableHeadCell>Créateur</TableHeadCell>
-				<TableHeadCell>Nom de l'évènement</TableHeadCell>
-				<TableHeadCell>Date de création</TableHeadCell>
-				<TableHeadCell>Date de l'évènement</TableHeadCell>
-				<TableHeadCell>Ville</TableHeadCell>
-				<TableHeadCell>Prix</TableHeadCell>
-				<TableHeadCell>Participants</TableHeadCell>
+				<TableHeadCell>{translation.event.creator}</TableHeadCell>
+				<TableHeadCell>{translation.event.eventName}</TableHeadCell>
+				<TableHeadCell>{translation.event.createdAt}</TableHeadCell>
+				<TableHeadCell>{translation.event.eventDate}</TableHeadCell>
+				<TableHeadCell>{translation.event.city}</TableHeadCell>
+				<TableHeadCell>{translation.event.price}</TableHeadCell>
+				<TableHeadCell>{translation.event.participants}</TableHeadCell>
 			</TableHead>
 			<TableBody tableBodyClass="divide-y" class="text-white">
 				{#if response.data}
@@ -96,10 +98,12 @@
 								>{new Date(data.time).toLocaleString('fr-FR', formatDate)}</TableBodyCell
 							>
 							<TableBodyCell>{data.city}</TableBodyCell>
-							<TableBodyCell>{data.price === 0 ? 'gratuit' : data.price}</TableBodyCell>
+							<TableBodyCell>{data.price === 0 ? translation.event.free : data.price}</TableBodyCell
+							>
 							<TableBodyCell>{data._count.userParticipate}</TableBodyCell>
 							<TableBodyCell class="notBorder"
 								><ModalUpdate
+									{translation}
 									formData={{
 										...data,
 										categoryName: data.category.name,
