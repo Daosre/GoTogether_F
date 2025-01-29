@@ -8,7 +8,6 @@
 	import { language } from '../../../../utils/translations/language';
 	import type { signupErrorType } from '../../../../utils/type';
 	import { schemaSignin } from '../../../../validator/signin';
-
 	let formData = $state({
 		identifiant: '',
 		password: '',

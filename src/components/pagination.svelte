@@ -2,7 +2,6 @@
 	import { ArrowLeft, ArrowRight } from 'lucide-svelte';
 	import { getContext } from 'svelte';
 	let isDark: { get: () => boolean } = getContext('isDark');
-
 	let { page = $bindable(), isNextPage } = $props();
 </script>
 

@@ -8,7 +8,7 @@
 	import { handleError } from '../../utils/handleError';
 	import { schemaSignup } from '../../validator/signup';
 	import { schemaSignupUpdate } from '../../validator/userUpdate';
-	import type { langType, language } from '../../utils/translations/language';
+	import type { language } from '../../utils/translations/language';
 	let {
 		formData = $bindable({
 			userName: '',

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-
 	let { text = "Plus d'information", redirect } = $props();
 </script>
 

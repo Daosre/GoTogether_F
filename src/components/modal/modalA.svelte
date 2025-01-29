@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { CircleX } from 'lucide-svelte';
 	import { language, type langType } from '../../utils/translations/language';
-
 	let { data, isOpen = $bindable() }: { data: langType; isOpen: boolean } = $props();
 	let translation = $state(language[data]);
 	$effect(() => {

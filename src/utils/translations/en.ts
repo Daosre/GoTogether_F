@@ -53,6 +53,7 @@ export const en = {
 		price: 'Price',
 		subscribe: 'Subscribe',
 		unsubscribe: 'Unsubscribe',
+		titleForm: 'Event creation',
 		validForm: 'Create event',
 		creator: 'Creator',
 		eventName: 'Event name',

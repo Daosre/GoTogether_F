@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import Translate from '../../../../components/h.f/translate.svelte';
 	import InputForm from '../../../../components/input/InputForm.svelte';
 	import InputSubmit from '../../../../components/input/InputSubmit.svelte';
 	import { requestPost } from '../../../../services/requestPost';

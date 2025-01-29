@@ -2,7 +2,6 @@
 	import { formatHM } from '../../utils/const';
 	import type { eventPropsType } from '../../utils/type';
 	import ButtonInformation from '../button/buttonInformation.svelte';
-
 	let { lang, data, translation, index }: eventPropsType & { index: number } = $props();
 </script>
 

@@ -54,6 +54,7 @@ export const fr = {
 		price: 'Prix',
 		subscribe: 'Participer',
 		unsubscribe: 'Se désinscrire',
+		titleForm: "Création d'évènement",
 		validForm: 'Créer un événement',
 		creator: 'Créateur',
 		eventName: "Nom de l'évènement",
