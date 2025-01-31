@@ -26,7 +26,7 @@
 					Go Together est votre partenaire idéal pour organiser des événements inoubliables, où
 					chaque moment est conçu pour renforcer les liens, stimuler la créativité et offrir des
 					expériences exceptionnelles. Rejoignez-nous pour créer des événements qui rassemblent,
-					inspirent et célèbrent l'esprit de communauté.
+					inspirent et célèbrent l'esprit de communauté
 				</p>
 				<br class="hidden md:block" />
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
