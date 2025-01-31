@@ -30,7 +30,7 @@
 				</p>
 				<br class="hidden md:block" />
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
-					Des événements pourraient t'intéresser ! <br class="md:hidden" />
+					Des événements pourraient vous intéresser ! <br class="md:hidden" />
 					<a href="/en/accueil" class="text-[#4E5C08]">Voir les événements</a>
 				</p>
 				<p class="Agdasima text-[16px] md:text-[20px] lg:text-[24px]">
